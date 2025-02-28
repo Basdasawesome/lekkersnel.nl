@@ -8,5 +8,5 @@ function getPage()
     if (!isset($_SESSION["page"])) {
         $_SESSION["page"] = "home";
     }
-    return "resources/views/" . $_SESSION["page"] . ".view.php";
+    return "../template/views/" . $_SESSION["page"] . ".view.php";
 }

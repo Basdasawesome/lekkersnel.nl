@@ -1,6 +1,6 @@
 <?php
 
-include_once "../libs/core.php";
+include_once "../src/helpers/core.php";
 
 ?>
 <!DOCTYPE html>
