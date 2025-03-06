@@ -4,8 +4,9 @@ include_once '../template/components/header.view.php';
 
 ?>
 <body>
+    <?php include_once '../template/components/navbar.php'; ?>
     <div>
-        <h1 class="text-3xl text-primary">heya</h1>
     </div>
+    <?php include_once '../template/components/footer.view.php'; ?>
 </body>
-<?php include_once '../template/components/footer.view.php'; ?>
+</html>
