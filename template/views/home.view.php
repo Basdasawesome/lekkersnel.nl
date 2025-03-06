@@ -8,4 +8,4 @@ include_once '../template/components/header.view.php';
         <h1 class="text-3xl text-primary">heya</h1>
     </div>
 </body>
-<?php include_once '../template/component/footer.view.php'; ?>
+<?php include_once '../template/components/footer.view.php'; ?>
