@@ -1,4 +1,4 @@
-<nav class="fixed top-0 border-solid border-gray-200 w-full border-b py-3 bg-white z-50">
+<nav class="fixed top-0 border-solid border-gray-200 w-full border-b py-3 bg-white z-50 mb">
         <div class="container mx-auto px-4">
             <div class="w-full flex flex-col lg:flex-row justify-between items-center">
                 <div class="flex justify-between items-center w-full lg:w-auto">
