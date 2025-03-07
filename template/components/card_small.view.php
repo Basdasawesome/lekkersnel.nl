@@ -1,4 +1,4 @@
-<div class="max-w-7xl mx-auto ">
+<div class="max-w-7xl mx-auto">
     <div class="w-full my-10">
         <h1 class="w-full text-2xl flex items-center gap-2">
             Onze favoriten
