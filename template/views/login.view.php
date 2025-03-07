@@ -4,7 +4,7 @@ include_once '../template/components/header.php';
 
 ?>
 
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
+<div class="flex items-center justify-center min-h-[calc(100vh-72px)] bg-gray-100">
     <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm text-center">
         <div class="flex justify-center mb-4">
             <img src="img/logo.png" alt="Logo" class="h-12">
@@ -31,3 +31,7 @@ include_once '../template/components/header.php';
         </div>
     </div>
 </div>
+
+</body>
+
+</html>
