@@ -7,7 +7,6 @@ include_once '../template/components/header.php';
 
 <div>
     <div>
-        <?php include_once '../template/components/navbar.php'; ?>
         <div class="pt-[70px]">
 
             <section id="contact">
