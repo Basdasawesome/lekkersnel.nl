@@ -1,7 +1,8 @@
 <?php
 
 include_once '../template/components/header.php';
-
+extract($data);
+var_dump($favs, $thema);
 ?>
 
 </body>
