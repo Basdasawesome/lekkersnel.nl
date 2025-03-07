@@ -1,5 +1,5 @@
-<footer class="bg-white">
-    <div class="container mx-auto pt-2">
+<footer class="bg-white mt-12">
+    <div class="mx-auto pt-2">
         <div class="w-full mx-auto flex justify-between items-center px-8">
             <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                 <img src="img/logo.png" class="h-8 pl-2" alt="Logo" />
@@ -35,3 +35,6 @@
         <span class="block text-xs text-white sm:text-center bg-primary py-2 mt-2 font-bold">© 2025 <a href="#" class="hover:underline">LekkerSnel™</a>. All Rights Reserved.</span>
     </div>
 </footer>
+</body>
+
+</html>

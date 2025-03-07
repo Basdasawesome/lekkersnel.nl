@@ -1,16 +1,12 @@
 <?php
 
 include_once '../template/components/header.php';
-extract($data);
-var_dump($favs, $thema);
+// extract($data);
+// var_dump($favs, $thema);
 ?>
 
-</body>
-<div>
-    <?php include_once '../template/components/navbar.php'; ?>
-    <div class="pt-[70px]">
-        <?php include '../template/components/hero.php'; ?>
-    </div>
+<?php include '../template/components/hero.php'; ?>
+
     <div class="mt-16">
         <?php include_once '../template/components/card_medium.php'; ?>
     </div>
@@ -23,10 +19,6 @@ var_dump($favs, $thema);
     <div class="mt-16">
         <?php include '../template/components/card_small.php' ?>
     </div>
-    <div class="mt-16">
-        <?php include_once '../template/components/footer.php'; ?>
-    </div>
-</div>
-</body>
-
-</html>
+    
+<?php include_once '../template/components/footer.php'; ?>
+    

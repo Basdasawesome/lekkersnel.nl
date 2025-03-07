@@ -1,10 +1,9 @@
 <?php
 
-include_once '../template/components/header.view.php';
+include_once '../template/components/header.php';
 
 ?>
 
-</body>
     <?php include_once '../template/components/navbar.php'; ?>
         <main>
             <!-- hero -->
@@ -75,4 +74,3 @@ include_once '../template/components/header.view.php';
             </section>
         </main>
     <?php include_once '../template/components/footer.php'; ?>
-</body>
