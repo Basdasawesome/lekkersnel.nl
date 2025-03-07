@@ -7,8 +7,6 @@ include_once '../template/components/header.php';
 
 <div>
     <div>
-        <div class="pt-[70px]">
-
             <section id="contact">
                 <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
                     <div class="mb-4">
@@ -86,11 +84,10 @@ include_once '../template/components/header.php';
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
 
 
-            <div class="mt-16">
+            <div class="">
                 <?php include_once '../template/components/footer.php'; ?>
             </div>
         </div>
