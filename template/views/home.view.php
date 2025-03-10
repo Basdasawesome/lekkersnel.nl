@@ -1,8 +1,9 @@
 <?php
 
 include_once '../template/components/header.php';
-// extract($data);
-// var_dump($database);
+extract($data);
+var_dump($database, $favorieten);
+$i = 0;
 ?>
 
 <?php include '../template/components/hero.php'; ?>

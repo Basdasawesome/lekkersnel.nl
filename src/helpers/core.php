@@ -10,9 +10,9 @@ function getPage()
     }
     switch ($_SESSION["page"]) {
         case 'home':
-            $favorieten = [1,2,3,4,5,6,7];
-            $themas = ["italiaans", "nederlands"];
             $database = getData();
+            $favorieten = [$database[6], $database[5], $database[0]];
+            $themas = ["italiaans", "nederlands"];
             $data = ["favs" => $favorieten, "thema" => $themas, "database" => $database];
             break;
         default:

@@ -1,4 +1,5 @@
 -- Create Database
+DROP DATABASE IF EXISTS lekkersneldb;
 CREATE DATABASE lekkersneldb;
 USE lekkersneldb;
 
@@ -20,6 +21,7 @@ CREATE TABLE Recipes (
     ingredients TEXT NOT NULL,
     preptime TEXT NOT NULL,
     quantity TEXT NOT NULL,
+    image TEXT NOT NULL,
     instructions TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -38,12 +40,12 @@ INSERT INTO Users (username, email, password_hash) VALUES
 ('user8', 'user8@example.com', SHA2('password8', 256));
 
 -- Insert Dummy Recipes
-INSERT INTO Recipes (user_id, title, description, ingredients, preptime, quantity, instructions, created_at) VALUES
-(1, 'Spaghetti Carbonara', 'A classic Italian pasta dish.', 'Spaghetti, Eggs, Parmesan, Pancetta, Black Pepper, Salt', '30 minuten', '3 personen', '1. Cook spaghetti. 2. Fry pancetta. 3. Mix eggs and cheese. 4. Combine and serve.', '2025-03-07 12:00:00'),
-(2, 'Chicken Curry', 'A flavorful Indian chicken curry.', 'Chicken, Onion, Garlic, Ginger, Tomatoes, Curry Powder, Coconut Milk, Salt, Pepper', '30 minuten', '3 personen', '1. Saute onions, garlic, and ginger. 2. Add chicken and cook. 3. Add tomatoes and spices. 4. Pour coconut milk and simmer.', '2025-03-07 12:30:00'),
-(3, 'Vegetable Stir Fry', 'A healthy stir fry with soy sauce.', 'Broccoli, Carrots, Bell Peppers, Soy Sauce, Garlic, Sesame Oil, Salt, Pepper', '30 minuten', '3 personen', '1. Heat oil. 2. Add garlic and vegetables. 3. Stir-fry until tender. 4. Add soy sauce and serve.', '2025-03-07 13:00:00'),
-(4, 'Pancakes', 'Fluffy pancakes served with syrup.', 'Flour, Eggs, Milk, Sugar, Baking Powder, Butter, Syrup', '30 minuten', '3 personen', '1. Mix ingredients. 2. Cook on a skillet. 3. Serve with syrup.', '2025-03-07 13:30:00'),
-(5, 'Caesar Salad', 'A fresh Caesar salad with dressing.', 'Romaine Lettuce, Croutons, Parmesan, Caesar Dressing', '30 minuten', '3 personen', '1. Chop lettuce. 2. Mix with croutons and cheese. 3. Add dressing and toss.', '2025-03-07 14:00:00'),
-(6, 'Beef Tacos', 'Tasty beef tacos with fresh toppings.', 'Ground Beef, Taco Shells, Lettuce, Tomato, Cheese, Sour Cream, Taco Seasoning', '30 minuten', '3 personen', '1. Cook beef. 2. Prepare toppings. 3. Assemble tacos and serve.', '2025-03-07 14:30:00'),
-(7, 'Chocolate Chip Cookies', 'Classic cookies with chocolate chips.', 'Flour, Sugar, Brown Sugar, Butter, Eggs, Chocolate Chips, Baking Soda, Salt, Vanilla Extract', '30 minuten', '3 personen', '1. Mix ingredients. 2. Bake at 350°F for 10-12 minutes. 3. Cool and enjoy.', '2025-03-07 15:00:00'),
-(8, 'Grilled Salmon', 'A healthy grilled salmon dish.', 'Salmon, Lemon, Olive Oil, Garlic, Dill, Salt, Pepper', '30 minuten', '3 personen', '1. Marinate salmon. 2. Grill for 5-7 minutes per side. 3. Serve with vegetables.', '2025-03-07 15:30:00');
+INSERT INTO Recipes (user_id, title, description, ingredients, preptime, quantity, image, instructions, created_at) VALUES
+(1, 'Spaghetti Carbonara', 'A classic Italian pasta dish.', 'Spaghetti, Eggs, Parmesan, Pancetta, Black Pepper, Salt', '30 minuten', '3 personen', '/img/spaghetti_carbonara.png', '1. Cook spaghetti. 2. Fry pancetta. 3. Mix eggs and cheese. 4. Combine and serve.', '2025-03-07 12:00:00'),
+(2, 'Chicken Curry', 'A flavorful Indian chicken curry.', 'Chicken, Onion, Garlic, Ginger, Tomatoes, Curry Powder, Coconut Milk, Salt, Pepper', '30 minuten', '3 personen', '/img/chicken_curry.png', '1. Saute onions, garlic, and ginger. 2. Add chicken and cook. 3. Add tomatoes and spices. 4. Pour coconut milk and simmer.', '2025-03-07 12:30:00'),
+(3, 'Vegetable Stir Fry', 'A healthy stir fry with soy sauce.', 'Broccoli, Carrots, Bell Peppers, Soy Sauce, Garlic, Sesame Oil, Salt, Pepper', '30 minuten', '3 personen', '/img/vegetable_stir_fry.png', '1. Heat oil. 2. Add garlic and vegetables. 3. Stir-fry until tender. 4. Add soy sauce and serve.', '2025-03-07 13:00:00'),
+(4, 'Pancakes', 'Fluffy pancakes served with syrup.', 'Flour, Eggs, Milk, Sugar, Baking Powder, Butter, Syrup', '30 minuten', '3 personen', '/img/pannenkoek.png', '1. Mix ingredients. 2. Cook on a skillet. 3. Serve with syrup.', '2025-03-07 13:30:00'),
+(5, 'Caesar Salad', 'A fresh Caesar salad with dressing.', 'Romaine Lettuce, Croutons, Parmesan, Caesar Dressing', '30 minuten', '3 personen', '/img/caesar_salad.png', '1. Chop lettuce. 2. Mix with croutons and cheese. 3. Add dressing and toss.', '2025-03-07 14:00:00'),
+(6, 'Beef Tacos', 'Tasty beef tacos with fresh toppings.', 'Ground Beef, Taco Shells, Lettuce, Tomato, Cheese, Sour Cream, Taco Seasoning', '30 minuten', '3 personen', '/img/beef_tacos.png', '1. Cook beef. 2. Prepare toppings. 3. Assemble tacos and serve.', '2025-03-07 14:30:00'),
+(7, 'Chocolate Chip Cookies', 'Classic cookies with chocolate chips.', 'Flour, Sugar, Brown Sugar, Butter, Eggs, Chocolate Chips, Baking Soda, Salt, Vanilla Extract', '30 minuten', '3 personen', '/img/chocolate_chip_cookies.png', '1. Mix ingredients. 2. Bake at 350°F for 10-12 minutes. 3. Cool and enjoy.', '2025-03-07 15:00:00'),
+(8, 'Grilled Salmon', 'A healthy grilled salmon dish.', 'Salmon, Lemon, Olive Oil, Garlic, Dill, Salt, Pepper', '30 minuten', '3 personen', '/img/grilled_salmon.png', '1. Marinate salmon. 2. Grill for 5-7 minutes per side. 3. Serve with vegetables.', '2025-03-07 15:30:00');
