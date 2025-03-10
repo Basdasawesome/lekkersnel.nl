@@ -1,28 +1,28 @@
-<footer class="bg-white mt-12">
-    <div class="mx-auto pt-2">
-        <div class="w-full mx-auto flex justify-between items-center px-8">
-            <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                <img src="img/logo.png" class="h-8 pl-2" alt="Logo" />
-                <span class="pl-2 self-center text-l font-semibold whitespace-nowrap">Gewoon, lekker snel!</span>
+<footer class="bg-white mt-12 w-full">
+    <div class="mx-auto pt-2 w-full">
+        <div class="w-full mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center px-4">
+            <a href="#" class="flex flex-col md:flex-row items-center text-center md:text-left mb-4 md:mb-0 space-x-3 rtl:space-x-reverse">
+                <img src="img/logo.png" class="h-8" alt="Logo" />
+                <span class="self-center text-l font-semibold whitespace-nowrap">Gewoon, lekker snel!</span>
             </a>
-            <div class="flex items-center space-x-6">
-                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">
-                    <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">Over ons</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">Recepten</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">Contact</a>
-                    </li>
+            <div class="flex flex-col md:flex-row items-center w-full md:w-auto space-y-4 md:space-y-0 md:space-x-6">
+                <ul class="flex flex-col md:flex-row items-center text-center md:text-left space-y-2 md:space-y-0 md:space-x-6 text-sm font-medium text-gray-500">
+                    <li><a href="#" class="hover:underline">Over ons</a></li>
+                    <li><a href="#" class="hover:underline">Recepten</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
                 </ul>
-                <div class="flex space-x-6 sm:justify-center">
+                <div class="flex gap-4 justify-center">
                     <a href="#" class="text-gray-500 hover:text-gray-900 border rounded-full w-8 h-8 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect width="4" height="12" x="2" y="9"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
                     </a>
                     <a href="#" class="text-gray-500 hover:text-gray-900 border rounded-full w-8 h-8 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
                     </a>
                     <a href="#" class="text-gray-500 hover:text-gray-900 border rounded-full w-8 h-8 flex items-center justify-center">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -32,9 +32,11 @@
                 </div>
             </div>
         </div>
-        <span class="block text-xs text-white sm:text-center bg-primary py-2 mt-2 font-bold">© 2025 <a href="#" class="hover:underline">LekkerSnel™</a>. All Rights Reserved.</span>
+        <span class="block text-xs text-white text-center bg-primary py-2 mt-2 font-bold w-full">© 2025 <a href="#" class="hover:underline">LekkerSnel™</a>. All Rights Reserved.</span>
     </div>
 </footer>
+
+
 </body>
 
 </html>
