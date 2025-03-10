@@ -12,7 +12,8 @@ function getPage()
         case 'home':
             $favorieten = [1,2,3,4,5,6,7];
             $themas = ["italiaans", "nederlands"];
-            $data = ["favs" => $favorieten, "thema" => $themas];
+            $database = getData();
+            $data = ["favs" => $favorieten, "thema" => $themas, "database" => $database];
             break;
         default:
             break;
