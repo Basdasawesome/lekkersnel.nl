@@ -2,7 +2,7 @@
 
 include_once '../template/components/header.php';
 // extract($data);
-// var_dump($favs, $thema);
+// var_dump($database);
 ?>
 
 <?php include '../template/components/hero.php'; ?>
