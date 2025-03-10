@@ -78,7 +78,7 @@ include_once '../template/components/header.php';
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="w-full bg-primary text-white px-6 py-3 font-xl rounded-md sm:mb-0">Send Message</button>
+                                        <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white px-6 py-3 font-xl rounded-md sm:mb-0">Send Message</button>
                                     </div>
                                 </form>
                             </div>
@@ -89,6 +89,5 @@ include_once '../template/components/header.php';
 
             <div class="">
                 <?php include_once '../template/components/footer.php'; ?>
-            </div>
         </div>
 </div>
