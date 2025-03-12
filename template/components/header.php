@@ -19,14 +19,14 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'home';
 </head>
 <body>
 
-<nav class="fixed top-0 left-0 w-full border-b border-gray-200 bg-white z-50">
+<nav class="w-full border-b border-gray-200 bg-white z-50">
     <div class="container mx-auto px-4 flex justify-between items-center py-3">
         <!-- Logo -->
         <a href="?page=home" class="flex items-center">
             <img src="img/logo.png" alt="logo" class="w-12 h-12">
         </a>
 
-        <!-- Menu + Profiel -->
+        <!-- Menu -->
         <div class="flex items-center gap-6">
             <!-- Desktop  -->
             <div id="menu" class="hidden lg:flex gap-10">
@@ -43,7 +43,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'home';
                 <button id="profile-btn" class="flex items-center focus:outline-none">
                     <img src="https://placehold.co/400" alt="User Profile" class="w-8 h-8 rounded-full">
                 </button>
-                <!-- Dropdown-menu -->
+                <!-- Dropdown -->
                 <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg">
                     <a href="?page=profiel" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profiel</a>
                     <a href="?page=logout" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Uitloggen</a>

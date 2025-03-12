@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Your code here
     
     document.getElementById('menu-toggle').addEventListener('click', function () {
         let menu = document.getElementById('mobile-menu');

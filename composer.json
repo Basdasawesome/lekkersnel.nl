@@ -1,0 +1,6 @@
+{
+    "require": {
+        "google/apiclient": "^2.18",
+        "phpauth/phpauth": "^1.5"
+    }
+}
