@@ -19,15 +19,18 @@ function DBconnect()
     return $pdo;
 }
 
-function getData() 
+function getData($id = null) 
 {
     $database = DBconnect();
-    $dataRequest = $database->prepare("SELECT * FROM recipes");
-    $dataRequest->execute();
-    $data = $dataRequest->fetchAll(PDO::FETCH_ASSOC);
+    if ($id !== null) {
+        $dataRequest = $database->prepare("SELECT *  FROM recipes WHERE recipe_id = :id");
+        $dataRequest->bindParam(":id", $id);
+        $dataRequest->execute();
+        $data = $dataRequest->fetch(PDO::FETCH_ASSOC);
+    } else {
+        $dataRequest = $database->prepare("SELECT * FROM recipes");
+        $dataRequest->execute();
+        $data = $dataRequest->fetchAll(PDO::FETCH_ASSOC);
+    }
     return $data;
 }
-
-
-
-
