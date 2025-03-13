@@ -28,6 +28,9 @@ function getPage()
             handleAuthRequests();
         }
     }
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && $_GET["page"] == "toevoegen") {
+        receptToevoegen();
+    }
     if (isset($_GET["page"])) {
         $_SESSION["page"] = $_GET["page"];
     }
