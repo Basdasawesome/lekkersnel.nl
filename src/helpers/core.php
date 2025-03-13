@@ -3,7 +3,30 @@
 function getPage()
 {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        handleAuthRequests();
+        if ($_SESSION["page"] === "profile") {
+            $userId = $_SESSION['user_id'];
+            $username = trim($_POST['username'] ?? '');
+            $email = trim($_POST['email'] ?? '');
+            $password = trim($_POST['password'] ?? '');
+
+            if (empty($username) || empty($email)) {
+                $_SESSION['error'] = "Username and email cannot be empty.";
+                header("Location: ?page=profile");
+                exit();
+            }
+
+            $updatePassword = !empty($password);
+            if (updateUser($userId, $username, $email, $updatePassword ? $password : null)) {
+                $_SESSION['success'] = "Profile updated successfully!";
+                $_SESSION['username'] = $username;
+            } else {
+                $_SESSION['error'] = "Failed to update profile.";
+            }
+            header("Location: ?page=profile");
+            exit();
+        } else {
+            handleAuthRequests();
+        }
     }
     if (isset($_GET["page"])) {
         $_SESSION["page"] = $_GET["page"];
