@@ -33,6 +33,10 @@ function getPage()
         case 'logout':
             include_once __DIR__ . '/logout.php';
             break;
+        case 'profile':
+            $user = getUser();
+            $data = ["user" => $user];
+            break;
         default:
             break;
     }
@@ -40,7 +44,6 @@ function getPage()
 }
 
 function handleAuthRequests() {
-    session_start();
     require_once __DIR__ . '/database.php';
     $pdo = DBconnect();
 

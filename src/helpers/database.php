@@ -34,3 +34,30 @@ function getData($id = null)
     }
     return $data;
 }
+
+function getUser() {
+    if (!isset($_SESSION['user_id'])) {
+        return null;
+    }
+
+    try {
+        $db = DBconnect();
+        
+        $query = "SELECT * FROM Users 
+                 WHERE user_id = :user_id";
+        
+        $stmt = $db->prepare($query);
+        $stmt->execute(['user_id' => $_SESSION['user_id']]);
+        
+        error_log("Rows returned: " . $stmt->rowCount());
+        
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        // var_dump($user);  
+
+        return $user ?: null;
+
+    } catch (PDOException $e) {
+        error_log("Database error: " . $e->getMessage());
+        return null;
+    }
+}
