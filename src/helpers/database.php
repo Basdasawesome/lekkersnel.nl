@@ -61,3 +61,33 @@ function getUser() {
         return null;
     }
 }
+
+function updateUser($userId, $username, $email, $password = null) {
+    try {
+        $db = DBconnect();
+        
+        $query = "UPDATE Users SET username = :username, email = :email";
+        
+        if ($password !== null && $password !== '') {
+            $query .= ", password_hash = :password_hash";
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        }
+        
+        $query .= " WHERE user_id = :user_id";
+        
+        $stmt = $db->prepare($query);
+        
+        $stmt->bindValue(':username', $username);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':user_id', $userId);
+        
+        if ($password !== null && $password !== '') {
+            $stmt->bindValue(':password_hash', $hashedPassword);
+        }
+        
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        error_log("Update User Error: " . $e->getMessage());
+        return false;
+    }
+}

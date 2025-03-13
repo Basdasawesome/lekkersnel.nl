@@ -1,12 +1,12 @@
 <?php 
-include_once '../template/components/header.php';
-
 // Debug information
 // var_dump(session_status());
 // var_dump($_SESSION);
 // var_dump("User ID from session:", $_SESSION['user_id']);
 
-$user = getUser();
+// $user = getUser();
+
+include_once '../template/components/header.php';
 
 ?>
 
@@ -16,8 +16,9 @@ $user = getUser();
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Left side - Form -->
+         <form action="?page=profile" method="POST">
         <div class="space-y-8">
-            <!-- Username field -->
+            <!-- Username -->
             <div>
                 <label class="block text-gray-700 mb-2">Username</label>
                 <div class="relative">
@@ -26,8 +27,8 @@ $user = getUser();
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                     </span>
-                    <input type="text" value="<?= htmlspecialchars($user['username']) ?>" 
-                           class="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    <input type="text" name="username" value="<?= htmlspecialchars($user['username']) ?>" 
+                           class="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500" required>
                     <button class="absolute right-4 top-1/2 -translate-y-1/2">
                         <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -36,7 +37,7 @@ $user = getUser();
                 </div>
             </div>
 
-            <!-- Email field -->
+            <!-- Email -->
             <div>
                 <label class="block text-gray-700 mb-2">Email</label>
                 <div class="relative">
@@ -45,8 +46,8 @@ $user = getUser();
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                     </span>
-                    <input type="email" value="<?= htmlspecialchars($user['email']) ?>" 
-                           class="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" 
+                           class="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500" required>
                     <button class="absolute right-4 top-1/2 -translate-y-1/2">
                         <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -55,7 +56,7 @@ $user = getUser();
                 </div>
             </div>
 
-            <!-- Password field -->
+            <!-- Password -->
             <div>
                 <label class="block text-gray-700 mb-2">Password</label>
                 <div class="relative">
@@ -64,7 +65,7 @@ $user = getUser();
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
                     </span>
-                    <input type="password" value="••••••••••••••" 
+                    <input type="password" name="password" placeholder="*************" 
                            class="w-full pl-12 pr-24 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500">
                     <button class="absolute right-4 top-1/2 -translate-y-1/2 px-4 py-1 text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200">
                         Change
@@ -72,6 +73,13 @@ $user = getUser();
                 </div>
             </div>
         </div>
+        <!-- Submit Button -->
+        <div class="mt-12">
+                <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition">
+                    Update Profile
+                </button>
+            </div>
+        </form>
 
         <!-- Right side - Profile Picture -->
         <div class="flex flex-col items-center">
@@ -101,7 +109,7 @@ $user = getUser();
         
         <!-- Recipe Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-8">
-            <!-- Recipe Card 1 -->
+            <!-- Card 1 -->
             <div class="relative rounded-lg overflow-hidden">
                 <img src="path/to/cheeseburger.jpg" alt="Cheeseburger" class="w-full h-64 object-cover">
                 <div class="absolute bottom-4 left-4">
@@ -114,7 +122,7 @@ $user = getUser();
                 </button>
             </div>
 
-            <!-- Recipe Card 2 -->
+            <!-- Card 2 -->
             <div class="relative rounded-lg overflow-hidden">
                 <img src="path/to/spareribs.jpg" alt="Spareribs" class="w-full h-64 object-cover">
                 <div class="absolute bottom-4 left-4">
