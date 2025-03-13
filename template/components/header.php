@@ -19,7 +19,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'home';
 </head>
 <body>
 
-<nav class="w-full border-b border-gray-200 bg-white z-50">
+<nav class="h-[72px] w-full border-b border-gray-200 bg-white z-50">
     <div class="container mx-auto px-4 flex justify-between items-center py-3">
         <!-- Logo -->
         <a href="?page=home" class="flex items-center">

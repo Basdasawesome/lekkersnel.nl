@@ -37,6 +37,10 @@ function getPage()
             $user = getUser();
             $data = ["user" => $user];
             break;
+        case 'recepten':
+            $database = getData();
+            $data = ["database" => $database];
+            break;
         default:
             break;
     }
