@@ -2,8 +2,11 @@
 
 function getPage()
 {
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_GET["page"] == "login" || $_GET["page"] == "register")) {
         handleAuthRequests();
+    }
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && $_GET["page"] == "toevoegen") {
+        receptToevoegen();
     }
     if (isset($_GET["page"])) {
         $_SESSION["page"] = $_GET["page"];
@@ -40,7 +43,6 @@ function getPage()
 }
 
 function handleAuthRequests() {
-    session_start();
     require_once __DIR__ . '/database.php';
     $pdo = DBconnect();
 
