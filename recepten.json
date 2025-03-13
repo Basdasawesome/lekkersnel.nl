@@ -257,7 +257,7 @@
       {
         "recipe_id": 1,
         "user_id": 123,
-        "title": "20 M + 20 M oventijd",
+        "title": "empanadas",
         "description": "Deze empanada (gevuld deeg pasteitje) met een kruidige vulling van gehakt is ideaal voor een borrel, tapasavond of als hartige lunch. Met kant en klaar deeg maak je het zelfs nog makkelijker en zijn ze binnen 35 minuten klaar.",
         "ingredients": [
             "1 rol hartig taartdeeg",
@@ -288,6 +288,97 @@
           "Smeer als laatste de empanadas in met wat sojamelk zodat ze wat bruiner worden.",
           "Leg ze naast elkaar op de bakplaat en schuif deze in de oven.",
           "Bak de empanadas 20 minuten in de oven of tot het deeg mooi gaar en goudbruin is. Laat ze eventjes afkoelen en serveer ze daarna meteen met jouw favoriete saus."
+        ],
+        "created_at": "2025-03-12T12:00:00Z",
+        "updated_at": "2025-03-12T12:00:00Z"
+      },
+      {
+        "recipe_id": 1,
+        "user_id": 123,
+        "title": "Risotto met kip",
+        "description": "Makkelijk recept voor romige risotto met gerookte kip en courgette inclusief een aantal handige tips voor het maken van risotto, zodat die altijd lukt.",
+        "ingredients": [
+          "300 gr risottorijst",
+          "75 gr Parmezaanse kaas",
+          "150 ml witte wijn",
+          "1 liter water",
+          "1 blokje kippenbouillon",
+          "2 tenen knoflook",
+          "1 uitje",
+          "klont boter",
+          "200 gr gerookte kip ( reepjes )",
+          "1 courgette",
+          "125 gr champignons"
+        ],
+        "preptime": "40 M",
+        "quantity": "3 personen",
+        "image": "https://www.leukerecepten.nl/app/uploads/2022/04/Risotto-met-kip_c.jpg",
+        "instructions": [
+          "Breng het water in een pannetje aan de kook en voeg de bouillonblokjes toe. Laat de bouillon op een klein pitje staan, zodat de warm blijft.",
+          "Snipper de ui en knoflook en fruit aan in een beetje olie in een pan.",
+          "Voeg dan de risotto toe en bak deze al roerend 2 à 3 minuutjes tot hij glazig wordt",
+          "Blus dan de rijst af met de wijn. Voeg na een paar minuten als de wijn is opgenomen een soeplepel bouillon toe en wacht weer tot deze is opgenomen. Roer af en toe door de rijst. Herhaal dit tot de bouillon is opgenomen.",
+          "Snijd ondertussen de courgette en eventueel de champignons in stukjes.",
+          "Verhit een beetje olie in een koekenpan en bak de courgette een paar minuten. Doe de champignons bij de courgette en bak deze ook een paar minuutjes mee.",
+          "Na ongeveer 25 min is de risotto zo ongeveer klaar. Hij moet zacht zijn van buiten maar nog een bite hebben van binnen.",
+          "Schep de kipreepjes door de risotto. Roer ook de courgette en champignons er door.",
+          "Maak de risotto smeuïg door een klont boter en ca. 50 gr Parmezaanse kaas toe te voegen. Wacht tot deze gesmolten is en schep dan wat risotto met kip op een bord en garneer met wat extra Parmezaanse kaas."
+        ],
+        "created_at": "2025-03-12T12:00:00Z",
+        "updated_at": "2025-03-12T12:00:00Z"
+      },
+      {
+        "recipe_id": 1,
+        "user_id": 123,
+        "title": "Nacho ovenschotel met gehakt",
+        "description": "Een echte guilty pleasure: Mexicaanse nacho ovenschotel. Gemaakt van nacho's met gehakt en gegratineerd met kaas. Met een kruidig gehaktmengsel en een romige topping van zure room. Jum!",
+        "ingredients": [
+          "150 gr nacho’s",
+          "300 gr gehakt",
+          "handje geraspte kaas",
+          "1 bosui",
+          "1 eetlepel Mexicaanse kruiden",
+          "1 paprika",
+          "125 ml zure room",
+          "1 tomaat",
+          "1 klein blikje maïs (Bonduelle)",
+          "1 jalapeño peper ( naar smaak )",
+          "Koriander of peterselie"
+        ],
+        "preptime": "25 M + 10 M oventijd",
+        "quantity": "3 personen",
+        "image": "https://www.leukerecepten.nl/app/uploads/2022/08/Nachos-met-gehakt-1-1024x576.jpg",
+        "instructions": [
+          "Verwarm de oven op 200 graden. Rul het gehakt rul in een pan. Voeg de Mexicaanse kruiden toe. Snijd de paprika in blokjes en bak een paar minuutjes mee met het gehakt. Laat de mais uitlekken en hak de bosui in ringetjes en voeg beide toe aan het gehakt. Snijd de tomaat in kleine blokjes en voeg ook toe aan het gehaktmengsel.",
+          "Verdeel ongeveer de helft van het Mexicaanse gehaktmengsel over de bodem van een ovenschaal. Dek af met de nacho’s. Verdeel hier overheen de rest van het gehaktmengsel. Schep hier de zure room op en garneer met wat ringetjes jalapeno peper. Bestrooi de nacho ovenschotel met kaas en gratineer 10 minuten in de oven. Garneer voor het serveren met wat koriander of peterselie."
+        ],
+        "created_at": "2025-03-12T12:00:00Z",
+        "updated_at": "2025-03-12T12:00:00Z"
+      },
+      {
+        "recipe_id": 1,
+        "user_id": 123,
+        "title": "Pasta carbonara",
+        "description": "Klassiek recept voor romige Italiaanse spaghetti carbonara met spekjes, eieren en Parmezaanse kaas",
+        "ingredients": [
+          "400 gr spaghetti",
+          "200 gr gerookte spekblokjes of reepjes",
+          "verse peterselie",
+          "100 gr Parmezaanse kaas ( geraspt )",
+          "3 eieren",
+          "snuf peper en zout"
+        ],
+        "preptime": "25 M",
+        "quantity": "4 personen",
+        "image": "https://www.leukerecepten.nl/app/uploads/2022/07/pasta-carbonara_recept-1024x546.jpg",
+        "instructions": [
+          "Doe de spekblokjes in een pan en bak ze mooi krokant. Ze hoeven niet helemaal uitgebakken te worden.",
+          "Zet ondertussen een grote pan water met een snufje zout op het vuur en als het water kookt voeg je de spaghetti toe. Kook de spaghetti in ongeveer 10 min al dente (of check de verpakking voor de bereidingswijze).",
+          "Voeg de pasta direct uit de pan waarin je het hebt gekookt toe aan de pan met spekjes toe en schep er doorheen. Zet het vuur uit van de pan met spekjes en spaghetti.",
+          "Voeg de geraspte Parmezaanse kaas toe en voeg er een klein beetje pasta kookvocht aan toe, zodat de kaas smelt.",
+          "Kluts ondertussen de eieren en voeg ze daarna al roerend toe. Blijf roeren totdat het een romige saus.",
+          "Garneer de pasta carbonara eventueel met een beetje kaas en peterselie. Pasta carbonara is lekker met een frisse salade.",
+          "Let op: Als de spaghetti te veel is afgekoeld, bindt de saus niet, maar als de spaghetti te heet is gaan de eieren stollen. Zet de pan daarom niet meer terug op het vuur."
         ],
         "created_at": "2025-03-12T12:00:00Z",
         "updated_at": "2025-03-12T12:00:00Z"
