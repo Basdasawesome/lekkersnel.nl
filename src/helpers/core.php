@@ -21,9 +21,9 @@ function getPage()
             $themas = ["italiaans", "nederlands"];
             $data = ["favs" => $favorieten, "thema" => $themas, "database" => $database];
             break;
-        case 'uitwerking':
-            $database = getData($_GET["id"]);
-            $ingredients = explode(",", $database["ingredients"]);
+            case 'uitwerking':
+                $database = getData($_GET["id"]);
+                $ingredients = explode(",", $database["ingredients"]);
             $instructions = preg_split('/\d+\.\s/', $database["instructions"], -1, PREG_SPLIT_NO_EMPTY);
             $data = ["recept" => $database, "ingredients" => $ingredients, "instructions" => $instructions];
             break;
@@ -32,9 +32,17 @@ function getPage()
             $favorieten = [$database[6], $database[5], $database[0]];
             $themas = ["italiaans", "nederlands"];
             $data = ["favs" => $favorieten, "thema" => $themas, "database" => $database];
-                break;
+            break;
         case 'logout':
             include_once __DIR__ . '/logout.php';
+            break;
+        case 'profile':
+            $user = getUser();
+            $data = ["user" => $user];
+            break;
+        case 'recepten':
+            $database = getData();
+            $data = ["database" => $database];
             break;
         default:
             break;
