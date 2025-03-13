@@ -38,14 +38,14 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'home';
                 <?php endforeach; ?>
             </div>
 
-            Profiel
+            <!-- Profiel -->
             <div class="relative">
                 <button id="profile-btn" class="flex items-center focus:outline-none">
                     <img src="https://placehold.co/400" alt="User Profile" class="w-8 h-8 rounded-full">
                 </button>
                 <!-- Dropdown-menu -->
                 <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg">
-                    <a href="?page=profiel" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profiel</a>
+                    <a href="?page=profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profiel</a>
                     <a href="?page=logout" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Uitloggen</a>
                 </div>
             </div>
