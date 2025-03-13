@@ -19,7 +19,7 @@ include_once '../template/components/header.php';
                         Laat het ons weten via het contactformulier. We doen ons best om zo snel mogelijk te reageren.
                         Jouw feedback helpt ons om de site nog beter te maken!
                     </p>
-                    <ul class="mb-6 md:mb-0 flex flex-col sm:flex-col md:flex-row lg:flex-col">
+                    <ul class="mb-6 md:mb-0 flex flex-row md:flex-row lg:flex-col justify-center gap-3">
                         <li class="flex mb-4 md:mb-0 lg:mb-4 md:mr-4 lg:mr-0">
                             <div class="flex h-10 w-10 items-center justify-center rounded text-primary">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
