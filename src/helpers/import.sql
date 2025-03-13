@@ -44,6 +44,9 @@ INSERT INTO Users (username, email, password_hash) VALUES
 ('user11', 'user11@example.com', SHA2('password11', 256)),
 ('user12', 'user12@example.com', SHA2('password12', 256));
 
+INSERT INTO Users (username, email, password_hash, profile_picture) VALUES
+('admin', 'admin@gmail.com', '$2y$10$HMKk9xx0ppDVUr6plK5THuyLuwnb4rxJV3Edy6pr5AcBx6LGO3adm', 'img/pfp.png');
+
 -- Insert Dummy Recipes
 INSERT INTO Recipes (user_id, title, description, ingredients, preptime, quantity, image, instructions, created_at) VALUES 
 (1, 'Pannenkoeken', 'Heerlijke luchtige pannenkoeken voor het ontbijt of als snack.','200g Bloem, 500ml Melk, 2 Eieren, Snufje Zout','15 M','4 personen','https://www.flyingfoodie.nl/wp-content/uploads/2017/10/Echte-hollandse-pannenkoeken.jpg','Meng de bloem met de melk.|Voeg de eieren toe en mix goed.|Voeg een snufje zout toe en meng.|Bak de pannenkoeken in een hete pan.','2025-03-12 12:00:00'),
