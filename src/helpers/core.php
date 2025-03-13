@@ -44,9 +44,9 @@ function getPage()
             $themas = ["italiaans", "nederlands"];
             $data = ["favs" => $favorieten, "thema" => $themas, "database" => $database];
             break;
-            case 'uitwerking':
-                $database = getData($_GET["id"]);
-                $ingredients = explode(",", $database["ingredients"]);
+        case 'uitwerking':
+            $database = getData($_GET["id"]);
+            $ingredients = explode(",", $database["ingredients"]);
             $instructions = preg_split('/\d+\.\s/', $database["instructions"], -1, PREG_SPLIT_NO_EMPTY);
             $data = ["recept" => $database, "ingredients" => $ingredients, "instructions" => $instructions];
             break;
