@@ -32,7 +32,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'home';
             <div id="menu" class="hidden lg:flex gap-10">
                 <?php foreach ($navItems as $label => $page): ?>
                     <a href="?page=<?= $page ?>" 
-                       class="nav-link text-gray-500 text-base font-medium hover:text-green-700 transition-all <?= $currentPage === $page ? 'active' : '' ?>">
+                        class="nav-link text-gray-500 text-base font-medium hover:text-gray-400 transition-all <?= $currentPage === $page ? 'active' : '' ?>">
                         <?= $label ?>
                     </a>
                 <?php endforeach; ?>
