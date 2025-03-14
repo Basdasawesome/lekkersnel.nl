@@ -33,6 +33,7 @@ function getPage()
     }
     if (isset($_GET["page"])) {
         $_SESSION["page"] = $_GET["page"];
+        $user = getUser();
     }
     if (!isset($_SESSION["page"])) {
         $_SESSION["page"] = "home";
