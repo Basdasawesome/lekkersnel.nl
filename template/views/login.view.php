@@ -1,5 +1,6 @@
 <?php
 include_once '../template/components/header.php';
+
 if (isset($_SESSION['error'])) {
     echo '<div class="error">' . $_SESSION['error'] . '</div>';
     unset($_SESSION['error']);
