@@ -9,4 +9,4 @@ require_once __DIR__ . '/../src/helpers/auth.php';
 
 
 getPage();
-checkAuth();
+// checkAuth();
