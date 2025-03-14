@@ -126,7 +126,7 @@ include_once '../template/components/header.php';
             <div class="relative rounded-lg overflow-hidden">
                 <img src="img/chicken_curry.png" alt="Chicken Curry" class="w-full h-64 object-cover">
                 <div class="absolute bottom-4 left-4">
-                    <span class="px-4 py-2 bg-primary text-white rounded-full">Chikcen Curry</span>
+                    <span class="px-4 py-2 bg-primary text-white rounded-full">Chicken Curry</span>
                 </div>
                 <button class="absolute top-4 right-4 p-2 text-primary">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
