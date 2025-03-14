@@ -28,7 +28,7 @@ include_once '../template/components/header.php';
                         </svg>
                     </span>
                     <input type="text" name="username" value="<?= htmlspecialchars($user['username']) ?>" 
-                           class="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500" required>
+                           class="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-primary focus:border-primary" required>
                     <button class="absolute right-4 top-1/2 -translate-y-1/2">
                         <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -47,7 +47,7 @@ include_once '../template/components/header.php';
                         </svg>
                     </span>
                     <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" 
-                           class="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500" required>
+                           class="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-primary focus:border-primary" required>
                     <button class="absolute right-4 top-1/2 -translate-y-1/2">
                         <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -66,7 +66,7 @@ include_once '../template/components/header.php';
                         </svg>
                     </span>
                     <input type="password" name="password" placeholder="*************" 
-                           class="w-full pl-12 pr-24 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                           class="w-full pl-12 pr-24 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-primary focus:border-primary">
                     <button class="absolute right-4 top-1/2 -translate-y-1/2 px-4 py-1 text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200">
                         Change
                     </button>
@@ -75,7 +75,7 @@ include_once '../template/components/header.php';
         </div>
         <!-- Submit Button -->
         <div class="mt-12">
-                <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition">
+                <button type="submit" class="w-full bg-primary text-white py-2 rounded-md hover:bg-primary hover:opacity-85 transition">
                     Update Profile
                 </button>
             </div>
@@ -96,14 +96,14 @@ include_once '../template/components/header.php';
                 </button>
             </div>
             <h2 class="text-2xl font-semibold mt-4"><?= htmlspecialchars($user['username']) ?></h2>
-            <div class="w-16 h-1 bg-green-500 mt-2 rounded-full"></div>
+            <div class="w-16 h-1 bg-primary mt-2 rounded-full"></div>
         </div>
     </div>
 
     <!-- Tabs -->
     <div class="mt-12">
         <div class="flex justify-center gap-4 border-b">
-            <button class="px-6 py-3 text-gray-700 border-b-2 border-green-500">Opgeslagen Recepten</button>
+            <button class="px-6 py-3 text-gray-700 border-b-2 border-primary">Opgeslagen Recepten</button>
             <button class="px-6 py-3 text-gray-500 hover:text-gray-700">Eigen Recepten</button>
         </div>
         
@@ -111,11 +111,11 @@ include_once '../template/components/header.php';
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-8">
             <!-- Card 1 -->
             <div class="relative rounded-lg overflow-hidden">
-                <img src="path/to/cheeseburger.jpg" alt="Cheeseburger" class="w-full h-64 object-cover">
+                <img src="img/grilled_salmon.png" alt="Grilled Salmon" class="w-full h-64 object-cover">
                 <div class="absolute bottom-4 left-4">
-                    <span class="px-4 py-2 bg-green-500 text-white rounded-full">CHEESEBURGER</span>
+                    <span class="px-4 py-2 bg-primary text-white rounded-full">Grilled Salmon</span>
                 </div>
-                <button class="absolute top-4 right-4 p-2 text-green-500">
+                <button class="absolute top-4 right-4 p-2 text-primary">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                     </svg>
@@ -124,11 +124,11 @@ include_once '../template/components/header.php';
 
             <!-- Card 2 -->
             <div class="relative rounded-lg overflow-hidden">
-                <img src="path/to/spareribs.jpg" alt="Spareribs" class="w-full h-64 object-cover">
+                <img src="img/chicken_curry.png" alt="Chicken Curry" class="w-full h-64 object-cover">
                 <div class="absolute bottom-4 left-4">
-                    <span class="px-4 py-2 bg-green-500 text-white rounded-full">SPARERIBS</span>
+                    <span class="px-4 py-2 bg-primary text-white rounded-full">Chikcen Curry</span>
                 </div>
-                <button class="absolute top-4 right-4 p-2 text-green-500">
+                <button class="absolute top-4 right-4 p-2 text-primary">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                     </svg>

@@ -1,6 +1,6 @@
 <footer class="bg-white mt-12 w-full">
     <div class="mx-auto pt-2 w-full">
-        <div class="w-full mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center px-4">
+        <div class="max-w-7xl w-full mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center px-4">
             <a href="#" class="flex flex-col md:flex-row items-center text-center md:text-left mb-4 md:mb-0 space-x-3 rtl:space-x-reverse">
                 <img src="img/logo.png" class="h-8" alt="Logo" />
                 <span class="self-center text-l font-semibold whitespace-nowrap">Gewoon, lekker snel!</span>
