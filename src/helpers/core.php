@@ -33,6 +33,8 @@ function getPage()
     }
     if (isset($_GET["page"])) {
         $_SESSION["page"] = $_GET["page"];
+        $user = getUser();
+        $i = 0;
     }
     if (!isset($_SESSION["page"])) {
         $_SESSION["page"] = "home";
@@ -65,6 +67,7 @@ function getPage()
             break;
         case 'recepten':
             $database = getData();
+            $favorieten = [$database[6], $database[5], $database[0]];
             $data = ["database" => $database];
             break;
         default:
