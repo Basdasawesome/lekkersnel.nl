@@ -9,7 +9,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 md:gap-16 mt-10">
         <?php foreach ($favorieten as $favoriet) { ?>
             <a href="?page=uitwerking&id=<?=$favoriet['recipe_id']?>">
-                <div class="w-full relative">
+                <div class="w-full relative hover:translate-y-[-5px] transition-all">
                     <img class="w-full object-cover h-64 min-h-[256px] rounded-lg" src="<?=$favoriet["image"]?>" alt="<?=$favoriet["title"]?>">
                     <h2 class="absolute bottom-4 left-4 text-white bg-primary p-2 rounded-md opacity-90 text-sm sm:text-base"><?=$favoriet["title"]?></h2>
                 </div>
