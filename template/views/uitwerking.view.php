@@ -3,7 +3,7 @@
 include_once '../template/components/header.php';
 
 extract($data);
-var_dump($recept, $ingredients, $instructions);
+// var_dump($recept, $ingredients, $instructions);
 ?>
 </div>
 
