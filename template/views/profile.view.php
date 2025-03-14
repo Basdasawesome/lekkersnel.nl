@@ -11,7 +11,7 @@ include_once '../template/components/header.php';
 ?>
 
 
-<section class="container mx-auto px-4 py-8">
+<section class="max-w-7xl mx-auto px-4 py-8">
     <h1 class="text-4xl font-bold mb-12">PROFIEL</h1>
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
