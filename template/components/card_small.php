@@ -10,7 +10,7 @@
         <?php for ($j = $i; $j < $i + 8; $j++) { 
             if (isset($database[$j])) { ?>
             <a href="?page=uitwerking&id=<?=$database[$j]["recipe_id"]?>">    
-                <div class="w-full relative">
+                <div class="w-full relative hover:translate-y-[-5px] transition-all">
                     <img class="w-full object-cover h-48 min-h-[192px] rounded-lg" src="<?=$database[$j]["image"]?>" alt="<?=$database[$j]["title"]?>">
                     <h2 class="absolute bottom-2 left-4 text-white bg-primary px-3 py-1 rounded-md bg-opacity-85"><?=$database[$j]["title"]?></h2>
                 </div>
@@ -27,8 +27,8 @@
     $i = $i + 8; ?>
     </div>
 
-    <div class="mt-8">
-        <button class="bg-primary opacity-80 text-white px-5 py-1 rounded-md text-base font-medium">
+    <div class="mt-8 flex justify-center">
+        <button class="bg-primary border border-white text-white opacity-80 px-10 py-1.5 rounded-md text-base font-[550] hover:bg-white hover:text-primary hover:border-primary transition">
             Bekijk Meer
         </button>
     </div>
