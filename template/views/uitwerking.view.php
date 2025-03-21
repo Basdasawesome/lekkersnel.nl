@@ -21,7 +21,7 @@ if (isset($recept) && is_array($recept)) {
 
 <?php include '../template/components/hero.php'; ?>
 
-<section class="max-w-4xl mx-auto bg-white p-8 pt-28">
+<section class="max-w-4xl mx-auto bg-white p-8 pt-28 mb-24">
     <div class="flex flex-col md:flex-row lg:gap-56">
         <div class="md:w-2/3">
             <h1 class="text-3xl font-bold mb-4"><?=$title?></h1>
