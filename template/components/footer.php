@@ -35,8 +35,7 @@
         <span class="block text-xs text-white text-center bg-primary py-2 mt-2 font-bold w-full">© 2025 <a href="#" class="hover:underline">LekkerSnel™</a>. All Rights Reserved.</span>
     </div>
 </footer>
-
-
+<script src="js/script.js"></script>
 </body>
 
 </html>

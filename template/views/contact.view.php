@@ -5,7 +5,7 @@ include_once '../template/components/header.php';
 ?>
 
 <section>
-    <div class="mx-auto max-w-7xl min-h-[calc(100vh-72px)] flex items-center justify-center mt-8 px-4">
+    <div class="mx-auto max-w-7xl min-h-[calc(100vh-72px)] flex items-center justify-center px-4">
         <div class="flex flex-col md:flex-row items-stretch justify-center">
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="h-full md:pr-6">
@@ -74,7 +74,7 @@ include_once '../template/components/header.php';
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white px-6 py-3 font-xl rounded-md sm:mb-0">Verstuur</button>
+                            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white px-6 py-3 font-xl rounded-md sm:mb-0 hover:opacity-85 transform transition-all">Verstuur</button>
                         </div>
                     </form>
                 </div>
