@@ -72,6 +72,3 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'home';
         </div>
     </div>
 </nav>
-<script src="js/script.js"></script>
-</body>
-</html>

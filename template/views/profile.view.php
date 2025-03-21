@@ -12,7 +12,7 @@ include_once '../template/components/header.php';
 
 
 <section class="max-w-7xl mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-12">PROFIEL</h1>
+    <h1 class="text-4xl font-medium mb-12 tracking-widest">PROFIEL</h1>
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Left side - Form -->
@@ -66,7 +66,7 @@ include_once '../template/components/header.php';
                         </svg>
                     </span>
                     <input type="password" name="password" placeholder="*************" 
-                           class="w-full pl-12 pr-24 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-primary focus:border-primary">
+                           class="w-full pl-12 pr-24 py-3 bg-white border border-gray-200 rounded-full focus:ring-2 focus:ring-primary focus:border-primary align-text-middle inline-block">
                     <button class="absolute right-4 top-1/2 -translate-y-1/2 px-4 py-1 text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200">
                         Change
                     </button>
@@ -95,7 +95,7 @@ include_once '../template/components/header.php';
                     </svg>
                 </button>
             </div>
-            <h2 class="text-2xl font-semibold mt-4"><?= htmlspecialchars($user['username']) ?></h2>
+            <h2 class="text-2xl font-medium tracking-wider mt-4"><?= htmlspecialchars($user['username']) ?></h2>
             <div class="w-16 h-1 bg-primary mt-2 rounded-full"></div>
         </div>
     </div>
