@@ -30,6 +30,8 @@ function getPage()
     }
     if ($_SERVER["REQUEST_METHOD"] === "POST" && $_GET["page"] == "toevoegen") {
         receptToevoegen();
+    } else {
+        $_SESSION["message"] = "";
     }
     if (isset($_GET["page"])) {
         $_SESSION["page"] = $_GET["page"];
