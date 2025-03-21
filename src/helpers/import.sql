@@ -65,8 +65,12 @@ INSERT INTO Users (username, email, password_hash) VALUES
 ('user2', 'user2@example.com', SHA2('password2', 256)),
 ('user3', 'user3@example.com', SHA2('password3', 256)),
 ('user4', 'user4@example.com', SHA2('password4', 256)),
-('user5', 'user5@example.com', SHA2('password5', 256)),
+('user5', 'user5@example.com', SHA2('password5', 256));
+
+-- Apart invoeren voor de admin, omdat deze een extra kolom (profile_picture) bevat
+INSERT INTO Users (username, email, password_hash, profile_picture) VALUES
 ('admin', 'admin@gmail.com', '$2y$10$HMKk9xx0ppDVUr6plK5THuyLuwnb4rxJV3Edy6pr5AcBx6LGO3adm', 'img/pfp.png');
+
 
 -- Dummy data voor Recipes
 INSERT INTO Recipes (user_id, title, description, image) VALUES
