@@ -48,9 +48,14 @@ function getPage()
             break;
         case 'uitwerking':
             $database = getData($_GET["id"]);
-            $ingredients = explode(",", $database["ingredients"]);
-            $instructions = preg_split('/\d+\.\s/', $database["instructions"], -1, PREG_SPLIT_NO_EMPTY);
-            $data = ["recept" => $database, "ingredients" => $ingredients, "instructions" => $instructions];
+
+            if (!empty($database)) {
+                $ingredients = !empty($database["ingredients"]) ? explode(",", $database["ingredients"]) : [];
+                $instructions = !empty($database["instructions"]) ? preg_split('/\d+\.\s/', $database["instructions"], -1, PREG_SPLIT_NO_EMPTY) : [];
+                $data = ["recept" => $database, "ingredients" => $ingredients, "instructions" => $instructions];
+            } else {
+                $data = ["recept" => [], "ingredients" => [], "instructions" => []];
+            }
             break;
         case 'login':
             $database = getData();
