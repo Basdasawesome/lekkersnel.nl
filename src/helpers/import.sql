@@ -6,8 +6,8 @@ USE lekkersneldb;
 -- Stap 2: Maak de Users-tabel aan
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     profile_picture VARCHAR(255) DEFAULT 'img/default-avatar.png',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
