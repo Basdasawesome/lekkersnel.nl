@@ -24,14 +24,14 @@ CREATE TABLE Recipes (
 
 CREATE TABLE Ingredients (
     ingredient_id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100) UNIQUE NOT NULL
+    name VARCHAR(100) UNIQUE NOT NULL,
+    unit VARCHAR(50) NULL
 );
 
 CREATE TABLE Recipe_Ingredients (
     recipe_id INT NOT NULL,
     ingredient_id INT NOT NULL,
     quantity VARCHAR(50) NOT NULL, 
-    unit VARCHAR(50) NULL, 
     PRIMARY KEY (recipe_id, ingredient_id),
     FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id) ON DELETE CASCADE,
     FOREIGN KEY (ingredient_id) REFERENCES Ingredients(ingredient_id) ON DELETE CASCADE
