@@ -2,7 +2,6 @@
 
 include_once '../template/components/header.php';
 
-// $i = 0;
 ?>
 
 <?php include_once '../template/components/heroHome.php' ?>
