@@ -1,10 +1,20 @@
 <?php
-$navItems = [
-    'Home' => 'home',
-    'Over ons' => 'about',
-    'Recepten' => 'recepten',
-    'Contact' => 'contact'
-];
+if (isset($_SESSION["user_id"])) {
+    $navItems = [
+        'Home' => 'home',
+        'Over ons' => 'about',
+        'Recepten' => 'recepten',
+        'Toevoegen' => 'toevoegen',
+        'Contact' => 'contact'
+    ];
+} else {
+    $navItems = [
+        'Home' => 'home',
+        'Over ons' => 'about',
+        'Recepten' => 'recepten',
+        'Contact' => 'contact'
+    ];
+}
 
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'home';
 ?>

@@ -1,8 +1,11 @@
 <?php include_once '../template/components/header.php'; ?>
-<?php include_once '../template/components/hero.php'; ?>
+<?php include_once '../template/components/hero.php'; 
+    // renderHero("Voeg een lekker recept toe!", "../img/hero.png");
+?>
 
+<script src="js/add.js" defer></script>
 <div class="text-red-600">
-    <p class="text-red-500 text-xl text-center mt-10 font-bold"><?=$_SESSION["message"]?></p>
+    <p class="text-red-500 text-xl text-center mt-10 font-bold"><?= isset($_SESSION["message"]) ? $_SESSION["message"] : "" ?></p>
 </div>
 <form action="?page=toevoegen" method="post" class="max-w-4xl mx-auto p-6 mt-20 mb-12 bg-white">
     <div class="flex flex-col md:flex-row gap-6">
@@ -41,29 +44,29 @@
         </div>
     </div>
 
-    <div class="mt-6">
+    <div id="inputIngredienten" class="mt-6">
         <div class="flex justify-between items-center">
             <label class="text-gray-700 text-sm font-medium" for="ingredienten">Benodigdheden</label>
-            <button class="text-primary text-sm font-medium hover:underline">+ Voeg ingrediënt toe</button>
+            <button id="addIngredienten" class="text-primary text-sm font-medium hover:underline">+ Voeg ingrediënt toe</button>
         </div>
         <div class="relative mt-2 flex">
-            <input type="text" name="ingredienten" id="ingredienten" placeholder="Hoeveelheid + Ingrediënten" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200">
-            <button class="text-gray-400 hover:text-red-500 ml-2">
+            <input type="text" name="ingredienten[]" id="ingredienten" placeholder="Hoeveelheid + Ingrediënten" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200">
+            <!-- <button class="text-gray-400 hover:text-red-500 ml-2">
                 🗑️
-            </button>
+            </button> -->
         </div>
     </div>
 
-    <div class="mt-6">
+    <div id="inputInstructies" class="mt-6">
         <div class="flex justify-between items-center">
             <label class="text-gray-700 text-sm font-medium" for="instructies">Bereidingswijze</label>
-            <button class="text-primary text-sm font-medium hover:underline">+ Voeg stap toe</button>
+            <button id="addInstructies" class="text-primary text-sm font-medium hover:underline">+ Voeg stap toe</button>
         </div>
         <div class="relative mt-2 flex">
-            <textarea placeholder="Beschrijf stap 1" name="instructies" id="instructies" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200"></textarea>
-            <button class="text-gray-400 hover:text-red-500 ml-2">
+            <textarea placeholder="Beschrijf eerste stap" name="instructies[]" id="instructies" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200"></textarea>
+            <!-- <button class="text-gray-400 hover:text-red-500 ml-2">
                 🗑️
-            </button>
+            </button> -->
         </div>
     </div>
 

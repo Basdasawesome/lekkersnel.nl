@@ -48,10 +48,9 @@ function getPage()
             break;
         case 'uitwerking':
             $database = getData($_GET["id"]);
-
             if (!empty($database)) {
                 $ingredients = !empty($database["ingredients"]) ? explode(",", $database["ingredients"]) : [];
-                $instructions = !empty($database["instructions"]) ? preg_split('/\d+\.\s/', $database["instructions"], -1, PREG_SPLIT_NO_EMPTY) : [];
+                $instructions = !empty($database["instructions"]) ? explode("|", $database["instructions"]) : [];
                 $data = ["recept" => $database, "ingredients" => $ingredients, "instructions" => $instructions];
             } else {
                 $data = ["recept" => [], "ingredients" => [], "instructions" => []];
@@ -74,6 +73,10 @@ function getPage()
             $database = getData();
             $favorieten = [$database[6], $database[5], $database[0]];
             $data = ["database" => $database];
+            break;
+        case 'toevoegen':
+            checkAuth();
+            $_SESSION["message"] = "";
             break;
         default:
             break;
