@@ -1,6 +1,6 @@
 <?php include_once '../template/components/header.php'; ?>
 <?php include_once '../template/components/hero.php'; 
-    // renderHero("Voeg een lekker recept toe!", "../img/hero.png");
+    renderHero("Voeg een lekker recept toe!", "../img/hero.png");
 ?>
 
 <script src="js/add.js" defer></script>
