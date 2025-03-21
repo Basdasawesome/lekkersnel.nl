@@ -25,8 +25,8 @@
                 </svg>
                 Alle recepten
             </button>
-            Alle recepten
             <button class="px-6 py-2 bg-white/90 text-gray-600 rounded-full hover:bg-white hover:text-primary transition-all">
+                Ontbijt
             </button>
             <button class="px-6 py-2 bg-white/90 text-gray-600 rounded-full hover:bg-white hover:text-primary transition-all">
                 Lunch
