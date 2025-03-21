@@ -49,7 +49,7 @@ function getPage()
         case 'uitwerking':
             $database = getData($_GET["id"]);
             $ingredients = explode(",", $database["ingredients"]);
-            $instructions = preg_split('/\d+\.\s/', $database["instructions"], -1, PREG_SPLIT_NO_EMPTY);
+            $instructions = explode("|", $database["instructions"]);
             $data = ["recept" => $database, "ingredients" => $ingredients, "instructions" => $instructions];
             break;
         case 'login':
@@ -69,6 +69,10 @@ function getPage()
             $database = getData();
             $favorieten = [$database[6], $database[5], $database[0]];
             $data = ["database" => $database];
+            break;
+        case 'toevoegen':
+            checkAuth();
+            $_SESSION["message"] = "";
             break;
         default:
             break;
