@@ -1,4 +1,4 @@
-<div class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/hero.jpg');">
+<div class="relative bg-cover bg-center z-0" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/hero.jpg');">
     <div class="container mx-auto px-4 py-12 md:py-24">
 
         <!-- Main Content -->
