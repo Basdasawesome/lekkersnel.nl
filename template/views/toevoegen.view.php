@@ -7,9 +7,10 @@
 <div class="text-red-600">
     <p class="text-red-500 text-xl text-center mt-10 font-bold"><?= isset($_SESSION["message"]) ? $_SESSION["message"] : "" ?></p>
 </div>
-<form action="?page=toevoegen" method="post" class="max-w-4xl mx-auto p-6 mt-20 mb-12 bg-white">
+<form action="?page=toevoegen" method="post" class="max-w-4xl mx-auto p-6 mt-20 mb-12 bg-white" enctype="multipart/form-data">
     <div class="flex flex-col md:flex-row gap-6">
         <div class="w-full md:w-1/3 h-52 flex flex-col justify-center items-center border border-gray-300 rounded-lg cursor-pointer">
+            <input type="file" name="image" id="image">
             <svg class="w-10 h-10 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
