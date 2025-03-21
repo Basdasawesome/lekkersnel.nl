@@ -15,7 +15,7 @@ include_once '../template/components/header.php';
     </div>
     <div class="mt-16">
         <?php include_once '../template/components/hero.php';
-        renderHero("Vind hier alle thema's voor je favoriete gerechten", "../img/hero.png"); ?>
+        renderHero("Vind jouw ideale smaakthema!", "https://images.pexels.com/photos/3756523/pexels-photo-3756523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); ?>
     </div>
     <div class="mt-16">
         <?php include '../template/components/card_small.php' ?>

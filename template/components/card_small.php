@@ -27,7 +27,7 @@
     $i = $i + 8; ?>
     </div>
 
-    <div class="mt-8 flex justify-center">
+    <div class="mt-12 flex justify-center">
         <button class="bg-primary border border-white text-white opacity-80 px-10 py-1.5 rounded-md text-base font-[550] hover:bg-white hover:text-primary hover:border-primary transition">
             Bekijk Meer
         </button>
