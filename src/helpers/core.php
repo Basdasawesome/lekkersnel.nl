@@ -76,7 +76,6 @@ function getPage()
             break;
         case 'toevoegen':
             checkAuth();
-            $_SESSION["message"] = "";
             break;
         default:
             break;
