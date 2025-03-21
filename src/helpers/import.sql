@@ -1,9 +1,9 @@
--- Create Database
+-- Stap 1: Maak de database aan
 DROP DATABASE IF EXISTS lekkersneldb;
 CREATE DATABASE lekkersneldb;
 USE lekkersneldb;
 
--- Create Users Table
+-- Stap 2: Maak de Users-tabel aan
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -13,51 +13,107 @@ CREATE TABLE Users (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create Recipes Table
+-- Stap 3: Maak de Recipes-tabel aan
 CREATE TABLE Recipes (
     recipe_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     title VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
-    ingredients TEXT NOT NULL,
-    preptime TEXT NOT NULL,
-    quantity TEXT NOT NULL,
     image TEXT NOT NULL,
-    instructions TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
--- Insert Dummy Users
+-- Stap 4: Maak een Ingredients-tabel aan
+CREATE TABLE Ingredients (
+    ingredient_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) UNIQUE NOT NULL
+);
+
+-- Stap 5: Maak een koppeltabel tussen recepten en ingrediënten
+CREATE TABLE Recipe_Ingredients (
+    recipe_id INT NOT NULL,
+    ingredient_id INT NOT NULL,
+    quantity VARCHAR(50) NOT NULL, -- Bijvoorbeeld "200g", "2 stuks"
+    unit VARCHAR(50) NULL, -- Optioneel: "gram", "ml", "stuks", enz.
+    PRIMARY KEY (recipe_id, ingredient_id),
+    FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id) ON DELETE CASCADE,
+    FOREIGN KEY (ingredient_id) REFERENCES Ingredients(ingredient_id) ON DELETE CASCADE
+);
+
+-- Stap 6: Maak een Instructions-tabel aan voor stappen per recept
+CREATE TABLE Instructions (
+    instruction_id INT PRIMARY KEY AUTO_INCREMENT,
+    recipe_id INT NOT NULL,
+    step_number INT NOT NULL,
+    instruction_text TEXT NOT NULL,
+    FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id) ON DELETE CASCADE
+);
+
+-- Stap 7: Maak een PreparationTime-tabel aan
+CREATE TABLE PreparationTime (
+    recipe_id INT PRIMARY KEY,
+    time_value INT NOT NULL, -- Bijvoorbeeld 30
+    time_unit ENUM('seconds', 'minutes', 'hours') NOT NULL, -- Minuten, uren etc.
+    FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id) ON DELETE CASCADE
+);
+
+-- Dummy data voor Users
 INSERT INTO Users (username, email, password_hash) VALUES
 ('user1', 'user1@example.com', SHA2('password1', 256)),
 ('user2', 'user2@example.com', SHA2('password2', 256)),
 ('user3', 'user3@example.com', SHA2('password3', 256)),
 ('user4', 'user4@example.com', SHA2('password4', 256)),
 ('user5', 'user5@example.com', SHA2('password5', 256)),
-('user6', 'user6@example.com', SHA2('password6', 256)),
-('user7', 'user7@example.com', SHA2('password7', 256)),
-('user8', 'user8@example.com', SHA2('password8', 256)),
-('user9', 'user9@example.com', SHA2('password9', 256)),
-('user10', 'user10@example.com', SHA2('password10', 256)),
-('user11', 'user11@example.com', SHA2('password11', 256)),
-('user12', 'user12@example.com', SHA2('password12', 256));
-
-INSERT INTO Users (username, email, password_hash, profile_picture) VALUES
 ('admin', 'admin@gmail.com', '$2y$10$HMKk9xx0ppDVUr6plK5THuyLuwnb4rxJV3Edy6pr5AcBx6LGO3adm', 'img/pfp.png');
 
--- Insert Dummy Recipes
-INSERT INTO Recipes (user_id, title, description, ingredients, preptime, quantity, image, instructions, created_at) VALUES 
-(1, 'Pannenkoeken', 'Heerlijke luchtige pannenkoeken voor het ontbijt of als snack.','200g Bloem, 500ml Melk, 2 Eieren, Snufje Zout','15 M','4 personen','https://www.flyingfoodie.nl/wp-content/uploads/2017/10/Echte-hollandse-pannenkoeken.jpg','Meng de bloem met de melk.|Voeg de eieren toe en mix goed.|Voeg een snufje zout toe en meng.|Bak de pannenkoeken in een hete pan.','2025-03-12 12:00:00'),
-(2, 'Pizza margherita','Een simpele pizza kan zo lekker zijn. Zeker als je hem zelf maakt. Deze pizza margherita met tomatensaus en kaas is zo klaar en smaakt extra lekker.','200 ml pizzasaus, 100 gr geraspte kaas, 1 handje verse basilicum, 1 bol mozzarella, 1 portie pizzadeeg (of 1 pak mix voor pizza bodem)','20 M + 15 M oventijd','2 personen','https://www.leukerecepten.nl/app/uploads/2023/02/pizza-margharita.jpg','Bereid het pizzadeeg volgens het recept of de verpakking.|Verwarm de oven voor op 240 graden.|Als het deeg klaar is, neem je de bal uit de kom en verdeel je deze gelijke delen (1 deel per pizza).|Bebloem een werkoppervlak en rol een bal pizzadeeg uit tot ongeveer 4 mm dikte en leg op een bakplaat met bakpapier.|Verdeel pizzasaus er over.|Scheur de mozzarella in stukjes en verdeel over de tomatensaus.|Bestrooi met geraspte kaas.|Bestrijk de randen van de pizza met een dun laagje olijfolie.|Bak de pizza ongeveer 10 tot 15 M knapperig in de oven.|Garneer de zelfgemaakte pizza margherita met verse basilicum.','2025-03-12 12:00:00'),
-(3, 'Cheeseburger','Geniet van een heerlijke klassieke cheeseburger! Ons recept bevat sappige hamburgers met gesmolten cheddar, plakjes tomaat en gebakken rode ui. Perfect voor een gezellige maaltijd of een zomerse barbecue.','2 hamburgerbroodjes, 2 burgers, 4 plakken cheddar kaas, 1 Handje sla, 1 rode ui, 2 augurken, 1 tomaat, 2 eetlepels mayonaise, 2 eetlepels ketchup (Heinz), 1 Snuf cayennepeper, 1 snuf peper en zout','25 M','2 personen','https://www.leukerecepten.nl/app/uploads/2023/06/cheeseburger.jpg','Maak eerst de saus door de ingrediënten goed door elkaar te mengen.|Snijd de rode ui in dunne ringetjes en bak deze in een pan. Snijd de tomaten en augurk in plakjes.|Verhit een pan met een beetje olie of boter (of verwarm de bbq) en leg de hamburgers hierin of op. Bak de burgers een paar M aan een zijde en draai dan om. Leg een plakje cheddarkaas op de burgers en laat deze iets zacht worden.|Snijd de broodjes open (rooster eventueel de binnenzijde lichtjes aan). Verdeel een beetje sla op de onderzijde van de broodjes. Leg hier een plakje cheddarkaas op.|Leg hier de burger met cheddar kaas op en verdeel de plakjes tomaat, augurk en gebakken ui hierover. Top de burger af met de hamburgersaus en dek af met de bovenzijde van het broodje.','2025-03-12 12:00:00'),
-(4, 'Burrito met kip','Lekker recept voor burrito met kip. Een heerlijke Mexicaanse maaltijd van wraps gevuld en opgerold met kip, rijst, bonen en kaas.','4 grote tortilla wraps, 200 gr bonen, 160 gr stukjes kip ( vegetarisch ), 1 klein kropje sla, 100 ml tomatensaus, 1 teen knoflook, 1 kleine ui, 70 gr maïs, 1 paprika, handje geraspte kaas, 0.5 eetlepel burrito of Mexicaanse kruiden, 100 gr rijst, 125 ml zure room','35 M','4 burritos','https://www.leukerecepten.nl/app/uploads/2020/05/burrito.jpg','Kook de rijst gaar. Snipper de ui fijn en hak de paprika in stukjes. Bak deze 5 minuutjes in een koekenpan met een beetje olie. Voeg de kip er aan toe en bak tot deze gaar is.|Voeg de kruiden toe en vervolgens ook de tomatensaus. Roer door elkaar. Voeg de uitgelekte bonen en mais toe. Laat het mengsel een paar minuutjes doorwarmen.|Verwarm een tortilla. Leg 2 blaadjes sla in het midden. Schep hier een beetje rijst op en het kipmengsel. Bestrooi met een beetje kaas. Vouw de 2 korte zijkanten iets over het mengsel en rol de tortilla met vulling op. Wikkel in aluminiumfolie of plak de rand vast met een beetje zure room zodat hij niet open gaat.|Halveer de burritos en serveer ze met de zure room. Dit recept is voor 2 personen.','2025-03-12 12:00:00'),
-(5, 'Lasagne bolognese','Het traditionele recept voor lasagne bolognese met een kruidige gehaktsaus en een romige bechamelsaus.','1 ui, 2 tenen knoflook, 2 eetlepels olie, 200 gr wortel, 125 gr bleekselderij, 500 gr rundergehakt, 1 theelepel oregano, 1 theelepel tijm, 1 klein blikje tomatenpuree ( à 70 gr ), 400 ml gezeefde tomaten ( blik ) (Heinz), 400 gr tomatenblokjes ( blik ), 1 blokje runderbouillon (Maggi), Snuf peper en zout, 2 bollen mozzarella, 12 lasagnebladen, handje geraspte kaas, 50 gr boter of margarine, 60 gr bloem, 600 ml melk, Snuf peper en zout','1 uur + 45 M oventijd','4 personen','https://www.leukerecepten.nl/app/uploads/2022/03/lasagne-bolognese.jpg','Verwarm de oven voor op 200° graden.|Snipper de ui en knoflook. Fruit dit aan in een grote pan met 1 eetlepel olie.|Snijd de wortel en bleekselderij in kleine stukjes en voeg toe aan de pan.|Voeg na een paar M het gehakt toe en bak mee.|Voeg de oregano en tijm toe samen met de tomatenpuree.|Doe dan de tomatenblokjes en gezeefde tomaten erbij en kruimel het bouillonblokje erbij. Laat de saus circa 30 M pruttelen.|Breng de saus eventueel nog extra op smaak met een snufje peper en zout.|Maak ondertussen de bechamelsaus. Smelt de boter in een pannetje en voeg de bloem toe. Bak deze roux 3 minuutjes zachtjes.|Snijd de mozzarella in dunne plakjes.|Vet de ovenschaal in met een beetje olie of boter.|Giet een klein beetje van de tomatensaus op de bodem. Leg hier 3 lasagnevellen op. Schep hier een beetje tomatensaus op en verdeel hier wat bechamelsaus over. Leg hier een paar plakjes mozzarella op. Dek af met lasagnebladen en herhaal dit tot de ingrediënten op zijn en eindig met een laag tomatensaus, bechamelsaus en mozzarella.|Bestrooi de lasagne bolognese met de geraspte kaas en zet 45 M in de oven.|Tips: Je hoeft voor deze lasagne de lasagnevellen niet voor te koken. Doe je dit wel dan hoeft hij maar circa 25 M in de oven.|Voor een vegetarische variant vervang je het rundergehakt door vegetarisch gehakt.','2025-03-12 12:00:00'),
-(6, 'Kipsaté','Kip saté is een echte klassieker! Deze kip spiesen hebben een heerlijke licht pittige zelfgemaakte marinade en zijn lekker met satésaus','500 gr kipfilet, 2 tenen knoflook, 2 eetlepels ketjap, 0.5 theelepel sambal','20 M + 30 M wachten','8 spiesjes','https://www.leukerecepten.nl/app/uploads/2019/05/recept-kip-sate-spies.jpg','Snijd de kip in blokjes. Hak de knoflook fijn en meng met de ketjap. Voeg ook de sambal hierbij. Voeg dit toe naar smaak; hoe meer, hoe pittiger de marinade wordt. Voeg nu de blokjes kip toe aan de en laat zo lang mogelijk, maar minimaal 30 M marineren.|Als de kip lang genoeg gemarineerd heeft, rijg de blokjes kip dan op de satestokjes. Bak de kip saté spiesen nu op de grill of de BBQ tot de kip gaar is, dit duurt afhankelijk van de dikte rond de 5 tot 7 M. Lekker met satésaus.|Tip: indien je houten satestokjes gebruikt, leg deze dan in een bak met water om te voorkomen dat deze verbranden tijdens het grillen. Ik gebruikte de ketjap kentol no.1 van het merk A trade mark (in een wit kannetje), deze is lekker dik en ideaal om te marineren.','2025-03-12 12:00:00'),
-(7, 'Spareribs','Hoe maak je de lekkerste spareribs? Hier vind je het recept voor een heerlijke zoete licht pittige sparerib marinade en een uitgebreide uitleg voor het bereiden van spareribs in de oven en op de barbecue','2 spareribs ( ca. 1200 tot 1400 gr in totaal ), 80 ml honing, 60 ml ketjap, 30 gr bruine basterdsuiker, 3 cm verse gember, 3 tenen knoflook, 2 eetlepels tomatenpuree, 1 rode peper, Snuf kaneelpoeder, 1 theelepel gedroogde rozemarijn, Paar druppels worcestersaus, scheutje water','15 M + 2 U 30 M bereiden','2 personen','https://www.leukerecepten.nl/app/uploads/2020/07/spareribs_b.jpg','Check of het vlies aan de onderzijde van de spareribs verwijdert is, vraag dit eventueel na aan de slager.|Doe alle ingrediënten (behalve het water en de spareribs) in de blender of keukenmachine en mix fijn tot een bruin papje dat de marinade wordt.|Leg de spareribs in de grote ovenschaal of bakslede. Als de spareribs te groot zijn kun je ze ook halveren. Verdeel bijna alles van de marinade over de spareribs maar bewaar een klein beetje om ze later nogmaals mee in te smeren. Dek de schaal af en laat minimaal een uur marineren in de koelkast, het liefst de hele nacht voor een intensere smaak.|Verwarm de oven op 150 graden. Voeg een scheutje water toe aan de ovenschaal met de spareribs en dek weer af met folie en zet de ovenschaal ca. 2 uur in de oven. Daarna zijn de spareribs voorgegaard en kun je kiezen of je ze verder bakt in de oven of op de barbecue.|In de oven: verwarm dan de temperatuur naar 200 graden en kwast de spareribs nogmaals in met de overgebleven marinade en bak ze nog ca. 30 M in de oven (zonder folie).|Op de BBQ: Verhit de BBQ op ca. 220 graden en kwast de spareribs nogmaals in met de overgebleven marinade. Grill de spareribs ca. 20 M op de barbecue tot ze een mooi bruin en licht krokant korstje hebben.','2025-03-12 12:00:00'),
-(8, 'Maki sushi recept','Deze traditionele sushi rol maak je makkelijk zelf met een norivel, sushirijst en diverse lekkere vullingen zoals zalm, komkommer en avocado','5 eetlepels rijstazijn, 1 eetlepel witte wijnazijn, 500 gr sushirijst, 660 ml koud water, snufje zout, Snufje suiker, norivellen, zalm, avocado, komkommer, wortel, garnalen, mango, Omelet, surimi, tofu','25 M + 15 M','4 personen','https://www.leukerecepten.nl/app/uploads/2023/02/maki_sushi.jpg','Belangrijk is om op tijd te beginnen met het bereiden van de sushirijst. De rijst moet nadat je het gekookt hebt namelijk helemaal afkoelen. Was de sushirijst een paar keer met koud water.|Ondertussen maak je van de rijstazijn, wijnazijn, suiker en zout een mengsel wat je even kort opwarmt (in de magnetron kan ook). Roer alles goed door elkaar zodat de suiker en het zout opgelost zijn. Er zijn ook kant en klare flesjes sushi azijn verkrijgbaar.|Doe nu de rijst in een pan en giet het koude water hierover heen. Breng dit nu aan de kook en laat het voor ongeveer 10 tot 15 minuten zacht koken met deksel. De hoeveelheid water en kooktijd kan iets afwijken, check daarom de verpakking van de sushirijst. Zet dan het vuur uit en laat hem nog 10 min met deksel nastomen. De rijst moet kleverig en klonterig zijn.|Doe de rijst daarna in de houten schaal en giet hier ook het afgekoelde azijn mengsel overheen en meng het goed zonder je de rijst kapot roert. Laat de rijst nu verder afkoelen en bedek de sushirijst met een theedoek totdat je de sushi verder gaat maken.|Leg de bamboe sushimat klaar voor gebruik. Leg het nori vel met de gladde kant naar de onderkant op de mat en zorg dat je het vel met de sushirijst goed bedekt. Let op dat je wel een ruimte van ongeveer 1 cm vrijlaat aan de randen, deze heb je nodig om de rol weer dicht te maken. Vorm van de gesneden vis, groenten en andere ingrediënten vooraan op de plak rijst een lange horizontale rij en begin voorzichtig op te rollen.|Je gebruikt de bamboe mat om te rollen zodat je hem strak vast kan houden en stevig aan kan duwen tijdens het rollen. Door het vocht in de rijst blijft de nori goed aan elkaar plakken en gaat de rol niet meer open. Snijd daarna met een scherp mes de rollen in plakken.|Serveer de maki sushi met sojasaus en eventueel wat pittige wasabi en ingelegde gember.|Leg de maki sushi op een bord en serveer direct of bewaar maximaal 24 uur in de koelkast.','2025-03-12 12:00:00'),
-(9, 'Empanadas','Deze empanada (gevuld deeg pasteitje) met een kruidige vulling van gehakt is ideaal voor een borrel, tapasavond of als hartige lunch. Met kant en klaar deeg maak je het zelfs nog makkelijker en zijn ze binnen 35 minuten klaar.','1 rol hartig taartdeeg, 1 kleine rode ui, 2 teentjes knoflook, 0.25 rode peper, 1 wortel, 100 gr kastanjechampignons, 1 eetlepel olijfolie, 150 gr gehakt ( vegan ) (Garden Gourmet), 1 tl oregano, Peper en zout naar smaak, 1 theelepel tomatenpuree, 100 ml sojamelk (Alpro)','20 M + 15 M oventijd','voor 12 empanadas','https://images.getrecipekit.com/v1614896752_Beef-Cheese-Empanadas-Web-1_lqfa2v.jpg?aspect_ratio=4:3&quality=90&','Verwarm de oven voor op 200° graden en bekleed een ovenplaat met bakpapier.|Haal het taartdeeg uit de koelkast en rol het uit. Laat het even liggen terwijl je de groenten snijdt en bakt.|Snijd de rode ui, knoflook, rode peper, wortel en kastanjechampignons fijn.|Zet een koekenpan op het vuur en verhit wat olijfolie. Fruit hierin de rode ui, rode peper en knoflook even aan.|Voeg na 2-3 minuten de wortel, champignons en het vegan gehakt toe. Breng op smaak met oregano, peper en zout.|Voeg na 4-5 minuten de tomatenpuree en een scheutje water toe. Meng het goed door de groenten met het vegan gehakt en laat nog een paar minuten op een laag vuur bakken.|Steek uit het taartdeeg 12 kleine rondjes.|Schep een eetlepel van de saus op de rondjes en vouw ze vervolgens dubbel. Duw de randjes aan met een vork.|Smeer als laatste de empanadas in met wat sojamelk zodat ze wat bruiner worden.|Leg ze naast elkaar op de bakplaat en schuif deze in de oven.|Bak de empanadas 20 minuten in de oven of tot het deeg mooi gaar en goudbruin is. Laat ze eventjes afkoelen en serveer ze daarna meteen met jouw favoriete saus.','2025-03-12 12:00:00'),
-(10, 'Risotto met kip','Makkelijk recept voor romige risotto met gerookte kip en courgette inclusief een aantal handige tips voor het maken van risotto, zodat die altijd lukt.','300 gr risottorijst, 75 gr Parmezaanse kaas, 150 ml witte wijn, 1 liter water, 1 blokje kippenbouillon, 2 tenen knoflook, 1 uitje, klont boter, 200 gr gerookte kip ( reepjes ), 1 courgette, 125 gr champignons','40 M','3 personen','https://www.leukerecepten.nl/app/uploads/2022/04/Risotto-met-kip_c.jpg','Breng het water in een pannetje aan de kook en voeg de bouillonblokjes toe. Laat de bouillon op een klein pitje staan, zodat de warm blijft.|Snipper de ui en knoflook en fruit aan in een beetje olie in een pan.|Voeg dan de risotto toe en bak deze al roerend 2 à 3 minuutjes tot hij glazig wordt|Blus dan de rijst af met de wijn. Voeg na een paar minuten als de wijn is opgenomen een soeplepel bouillon toe en wacht weer tot deze is opgenomen. Roer af en toe door de rijst. Herhaal dit tot de bouillon is opgenomen.|Snijd ondertussen de courgette en eventueel de champignons in stukjes.|Verhit een beetje olie in een koekenpan en bak de courgette een paar minuten. Doe de champignons bij de courgette en bak deze ook een paar minuutjes mee.|Na ongeveer 25 min is de risotto zo ongeveer klaar. Hij moet zacht zijn van buiten maar nog een bite hebben van binnen.|Schep de kipreepjes door de risotto. Roer ook de courgette en champignons er door.|Maak de risotto smeuïg door een klont boter en ca. 50 gr Parmezaanse kaas toe te voegen. Wacht tot deze gesmolten is en schep dan wat risotto met kip op een bord en garneer met wat extra Parmezaanse kaas.','2025-03-12 12:00:00'),
-(11, 'Nacho ovenschotel met gehakt','Een echte guilty pleasure: Mexicaanse nacho ovenschotel. Gemaakt van nacho''s met gehakt en gegratineerd met kaas. Met een kruidig gehaktmengsel en een romige topping van zure room. Jum!','150 gr nacho''s, 300 gr gehakt, handje geraspte kaas, 1 bosui, 1 eetlepel Mexicaanse kruiden, 1 paprika, 125 ml zure room, 1 tomaat, 1 klein blikje maïs (Bonduelle), 1 jalapeño peper ( naar smaak ), Koriander of peterselie','25 M + 10 M oventijd','3 personen','https://www.leukerecepten.nl/app/uploads/2022/08/Nachos-met-gehakt-1-1024x576.jpg','Verwarm de oven op 200 graden. Rul het gehakt rul in een pan. Voeg de Mexicaanse kruiden toe. Snijd de paprika in blokjes en bak een paar minuutjes mee met het gehakt. Laat de mais uitlekken en hak de bosui in ringetjes en voeg beide toe aan het gehakt. Snijd de tomaat in kleine blokjes en voeg ook toe aan het gehaktmengsel.|Verdeel ongeveer de helft van het Mexicaanse gehaktmengsel over de bodem van een ovenschaal. Dek af met de nacho''s. Verdeel hier overheen de rest van het gehaktmengsel. Schep hier de zure room op en garneer met wat ringetjes jalapeno peper. Bestrooi de nacho ovenschotel met kaas en gratineer 10 minuten in de oven. Garneer voor het serveren met wat koriander of peterselie.','2025-03-12 12:00:00'),
-(12, 'Pasta carbonara','Klassiek recept voor romige Italiaanse spaghetti carbonara met spekjes, eieren en Parmezaanse kaas','400 gr spaghetti, 200 gr gerookte spekblokjes of reepjes, verse peterselie, 100 gr Parmezaanse kaas ( geraspt ), 3 eieren, snuf peper en zout','25 M','4 personen','https://www.leukerecepten.nl/app/uploads/2022/07/pasta-carbonara_recept-1024x546.jpg','Doe de spekblokjes in een pan en bak ze mooi krokant. Ze hoeven niet helemaal uitgebakken te worden.|Zet ondertussen een grote pan water met een snufje zout op het vuur en als het water kookt voeg je de spaghetti toe. Kook de spaghetti in ongeveer 10 min al dente (of check de verpakking voor de bereidingswijze).|Voeg de pasta direct uit de pan waarin je het hebt gekookt toe aan de pan met spekjes toe en schep er doorheen. Zet het vuur uit van de pan met spekjes en spaghetti.|Voeg de geraspte Parmezaanse kaas toe en voeg er een klein beetje pasta kookvocht aan toe, zodat de kaas smelt.|Kluts ondertussen de eieren en voeg ze daarna al roerend toe. Blijf roeren totdat het een romige saus.|Garneer de pasta carbonara eventueel met een beetje kaas en peterselie. Pasta carbonara is lekker met een frisse salade.|Let op: Als de spaghetti te veel is afgekoeld, bindt de saus niet, maar als de spaghetti te heet is gaan de eieren stollen. Zet de pan daarom niet meer terug op het vuur.','2025-03-12 12:00:00');
+-- Dummy data voor Recipes
+INSERT INTO Recipes (user_id, title, description, image) VALUES
+(1, 'Pannenkoeken', 'Heerlijke luchtige pannenkoeken voor het ontbijt of als snack.', 'https://www.flyingfoodie.nl/wp-content/uploads/2017/10/Echte-hollandse-pannenkoeken.jpg'),
+(2, 'Pizza margherita', 'Een simpele pizza kan zo lekker zijn.', 'https://www.leukerecepten.nl/app/uploads/2023/02/pizza-margharita.jpg'),
+(3, 'Cheeseburger', 'Geniet van een heerlijke klassieke cheeseburger!', 'https://www.leukerecepten.nl/app/uploads/2023/06/cheeseburger.jpg');
+
+-- Dummy data voor Ingredients
+INSERT INTO Ingredients (name) VALUES
+('Bloem'), ('Melk'), ('Eieren'), ('Zout'), ('Pizzasaus'),
+('Kaas'), ('Basilicum'), ('Mozzarella'), ('Pizzadeeg'),
+('Hamburgerbroodje'), ('Burger'), ('Cheddar kaas'), ('Rode ui'),
+('Augurk'), ('Tomaat'), ('Mayonaise'), ('Ketchup');
+
+-- Dummy data voor Recipe_Ingredients
+INSERT INTO Recipe_Ingredients (recipe_id, ingredient_id, quantity, unit) VALUES
+(1, 1, '200', 'g'), -- 200g Bloem voor Pannenkoeken
+(1, 2, '500', 'ml'), -- 500ml Melk voor Pannenkoeken
+(1, 3, '2', 'stuks'), -- 2 Eieren voor Pannenkoeken
+(1, 4, '1', 'snufje'), -- Snufje Zout voor Pannenkoeken
+(2, 5, '200', 'ml'), -- 200ml Pizzasaus voor Pizza margherita
+(2, 6, '100', 'g'), -- 100g Kaas voor Pizza margherita
+(2, 7, '1', 'handje'), -- 1 handje Basilicum voor Pizza margherita
+(2, 8, '1', 'bol'), -- 1 bol Mozzarella voor Pizza margherita
+(3, 10, '2', 'stuks'), -- 2 Hamburgerbroodjes voor Cheeseburger
+(3, 11, '2', 'stuks'), -- 2 Burgers voor Cheeseburger
+(3, 12, '4', 'plakken'), -- 4 plakken Cheddar kaas voor Cheeseburger
+(3, 13, '1', 'stuks'), -- 1 Rode ui voor Cheeseburger
+(3, 14, '2', 'stuks'), -- 2 Augurken voor Cheeseburger
+(3, 15, '1', 'stuks'), -- 1 Tomaat voor Cheeseburger
+(3, 16, '2', 'eetlepels'), -- 2 eetlepels Mayonaise voor Cheeseburger
+(3, 17, '2', 'eetlepels'); -- 2 eetlepels Ketchup voor Cheeseburger
+
+-- Dummy data voor Instructions
+INSERT INTO Instructions (recipe_id, step_number, instruction_text) VALUES
+(1, 1, 'Meng de bloem met de melk.'),
+(1, 2, 'Voeg de eieren toe en mix goed.'),
+(1, 3, 'Voeg een snufje zout toe en meng.'),
+(1, 4, 'Bak de pannenkoeken in een hete pan.'),
+(2, 1, 'Bereid het pizzadeeg volgens het recept.'),
+(2, 2, 'Verwarm de oven voor op 240 graden.'),
+(2, 3, 'Verdeel de saus en toppings over het deeg.'),
+(2, 4, 'Bak de pizza 15 minuten in de oven.');
+
+-- Dummy data voor PreparationTime
+INSERT INTO PreparationTime (recipe_id, time_value, time_unit) VALUES
+(1, 15, 'minutes'),
+(2, 20, 'minutes'),
+(3, 25, 'minutes');
+
