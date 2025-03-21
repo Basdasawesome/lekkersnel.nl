@@ -2,9 +2,7 @@
 
 function receptToevoegen()
 {
-    var_dump($_POST["ingredienten"], $_POST["instructies"]);
-
-    $_SESSION["message"] = "";
+    $message = "";
     $pdo = DBconnect();
 
     $naam = trim($_POST["naam"]);
@@ -24,8 +22,6 @@ function receptToevoegen()
     $image = "/img/error.png";
     $user_id = $_SESSION["user_id"];
 
-    var_dump($ingredienten, $instructies);
-
     if (empty($naam) || empty($bereidingstijd) || empty($aantal) || empty($beschrijving) || empty($ingredienten) || empty($instructies)) {
         $message = "Alle velden moeten ingevuld worden!";
     } else {
@@ -41,5 +37,6 @@ function receptToevoegen()
         $stmt->execute();
         $message = "Recept toegevoegd";
     }
+    
     $_SESSION["message"] = $message;
 }
