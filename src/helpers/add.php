@@ -1,8 +1,9 @@
 <?php
 
+use BcMath\Number;
+
 function receptToevoegen()
 {
-    $_SESSION["message"] = "";
     $message = "";
     $pdo = DBconnect();
 
@@ -33,39 +34,80 @@ function receptToevoegen()
         }
         move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
     }
-
+    
     $naam = trim($_POST["naam"]);
     $bereidingstijd = trim($_POST["bereidingstijd"]);
+    $tijd_eenheid = trim($_POST["tijd_eenheid"]);
     $aantal = trim($_POST["aantal"]);
     $beschrijving = trim($_POST["beschrijving"]);
-    $ingredienten = "";
-    foreach ($_POST["ingredienten"] as $ingredient) {
-        $ingredienten .= trim($ingredient) . ",";
+    $instructies = $_POST["instructies"];
+    $ingredienten = $_POST["ingredienten"];
+    $hoeveelheid = $_POST["hoeveelheid"];
+    $ingredient_eenheid = $_POST["ingredient_eenheid"];
+    if ($file["size"] > 0) {
+        $image = "/img/upload/" . $file["name"];
+    } else {
+        $image = "/img/error.png";
     }
-    $ingredienten = rtrim($ingredienten, ",");
-    $instructies = "";
-    foreach ($_POST["instructies"] as $instructie) {
-        $instructies .= trim($instructie) . "|";
-    }
-    $instructies = rtrim($instructies, "|");
-    $image = "/img/upload/" . $file["name"];
     $user_id = $_SESSION["user_id"];
-
-    if (empty($naam) || empty($bereidingstijd) || empty($aantal) || empty($beschrijving) || empty($ingredienten) || empty($instructies)) {
+    $recipe_id = 0;
+    
+    if (empty($naam) || empty($bereidingstijd) || empty($tijd_eenheid) || empty($aantal) || empty($beschrijving) || empty($ingredienten) || empty($instructies) || count($ingredienten) !== count($hoeveelheid) || count($ingredienten) !== count($ingredient_eenheid) || count($ingredient_eenheid) !== count($hoeveelheid)) {
         $message = "Alle velden moeten ingevuld worden!";
+    } else if (!is_numeric($bereidingstijd) || !is_numeric($aantal)) {
+        $message = "Bereidingstijd en personen moeten een cijfer zijn";
     } else if ($uploadOk == 0) {
         $message = "Er was een probleem met de foto uploaden";
     } else {
-        $stmt = $pdo->prepare("INSERT INTO recipes (user_id, title, description, ingredients, preptime, quantity, instructions, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO recipes (user_id, title, description, image) VALUES (?, ?, ?, ?)");
         $stmt->bindParam(1, $user_id);
         $stmt->bindParam(2, $naam);
         $stmt->bindParam(3, $beschrijving);
-        $stmt->bindParam(4, $ingredienten);
-        $stmt->bindParam(5, $bereidingstijd);
-        $stmt->bindParam(6, $aantal);
-        $stmt->bindParam(7, $instructies);
-        $stmt->bindParam(8, $image);
+        $stmt->bindParam(4, $image);
         $stmt->execute();
+        $recipe_id = $pdo->lastInsertId();
+
+        $i = 0;
+        foreach ($instructies as $instructie) {
+            $stmt = $pdo->prepare("INSERT INTO instructions (recipe_id, step_number, instruction_text) VALUES (?, ?, ?)");
+            $stmt->bindParam(1, $recipe_id);
+            $stmt->bindParam(2, $i);
+            $stmt->bindParam(3, $instructie);
+            $stmt->execute();
+            $i++;
+        }
+        
+        $stmt = $pdo->prepare("INSERT INTO preparationtime (recipe_id, time_value, time_unit) VALUES (?, ?, ?)");
+        $stmt->bindParam(1, $recipe_id);
+        $stmt->bindParam(2, $bereidingstijd);
+        $stmt->bindParam(3, $tijd_eenheid);
+        $stmt->execute();
+        
+        $j = 0;
+        foreach ($ingredienten as $ingredient) {
+            $stmt = $pdo->prepare("SELECT name, ingredient_id FROM ingredients WHERE name = :name");
+            $stmt->bindParam(":name", $ingredient);  
+            $stmt->execute();
+            $name = $stmt->fetch(PDO::FETCH_ASSOC);
+            $ingredient_id = "";
+            if ($name && $name["name"] == $ingredient) {
+                $ingredient_id = $name["ingredient_id"];
+            } else {
+                $stmt = $pdo->prepare("INSERT INTO ingredients (name) VALUES (?)");
+                $stmt->bindParam(1, $ingredient);
+                $stmt->execute();
+                $ingredient_id = $pdo->lastInsertId();
+            }
+            $stmt = $pdo->prepare("INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit) VALUES (?, ?, ?, ?)");
+            $stmt->bindParam(1, $recipe_id);
+            $stmt->bindParam(2, $ingredient_id);
+            $stmt->bindParam(3, $hoeveelheid[$j]);
+            $stmt->bindParam(4, $ingredient_eenheid[$j]);
+            $stmt->execute();
+
+            $j++;
+        } 
+
         $message = "Recept toegevoegd";
     }
 
