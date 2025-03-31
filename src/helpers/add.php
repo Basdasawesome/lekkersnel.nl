@@ -12,7 +12,6 @@ function receptToevoegen()
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $file = $_FILES["image"];
-    // var_dump($file);
 
     if ($file["size"] > 0) {
         if (isset($_POST["submit"])) {
@@ -23,8 +22,6 @@ function receptToevoegen()
                 $uploadOk = 0;
             }
         }
-
-        // var_dump($uploadOk);
         
         if (file_exists($target_file)) {
             $uploadOk = 0;
@@ -40,8 +37,6 @@ function receptToevoegen()
         }
         move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
     }
-    
-    // var_dump($_POST, $uploadOk);
 
     $naam = trim($_POST["naam"]);
     $bereidingstijd = trim($_POST["bereidingstijd"]);
