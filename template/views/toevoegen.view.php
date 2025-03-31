@@ -10,10 +10,12 @@
 <form action="?page=toevoegen" method="post" class="max-w-4xl mx-auto p-6 mt-20 mb-12 bg-white" enctype="multipart/form-data">
     <div class="flex flex-col md:flex-row gap-6">
         <div class="w-full md:w-1/3 h-52 flex flex-col justify-center items-center border border-gray-300 rounded-lg cursor-pointer">
-            <input type="file" name="image" id="image">
-            <svg class="w-10 h-10 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-            </svg>
+            <input type="file" name="image" id="image" class="hidden">
+            <label for="image" class="cursor-pointer hover:text-gray-600 transition-colors">
+                <svg class="w-10 h-10 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+            </label>
             <p class="text-gray-500 text-sm mt-2">Klik om een afbeelding te uploaden</p>
         </div>
 
@@ -85,7 +87,7 @@
     </div>
 
     <div class="mt-6 flex justify-end">
-        <input type="submit" class="bg-primary hover:bg-gray-800 text-white px-6 py-3 rounded-md opacity-90 transition duration-200"></button>
+        <input type="submit" class="bg-primary hover:opacity-75 transition-all text-white px-12 py-2 rounded-md opacity-90 transition duration-200"></button>
     </div>
 </form>
 
