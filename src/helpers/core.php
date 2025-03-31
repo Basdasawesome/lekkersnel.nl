@@ -71,6 +71,7 @@ function getPage()
             $favorieten = [];
             for ($i = 0; $i < 3 && $i < count($recipeIds); $i++) {
                 $favorieten[] = getData($recipeIds[$i]);
+            }
             $themas = ["italiaans", "nederlands"];
             $data = ["thema" => $themas, "database" => $database];
             break;
