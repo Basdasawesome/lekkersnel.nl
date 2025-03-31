@@ -44,7 +44,7 @@ include_once '../template/components/header.php';
             <!-- name 1 -->
             <div class="group bg-white rounded-2xl shadow-sm transition-all duration-300 ease-in-out overflow-hidden">
                 <div class="relative">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Teammate" class="w-full h-52 md:h-48 object-cover object-center" />
+                    <img src="img/Davey.png" alt="Teammate" class="w-full h-52 md:h-48 object-cover object-center" />
                     <div class="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 flex flex-col justify-end">
                         <h3 class="text-xl font-semibold text-white">Davey Munters</h3>
                         <p class="text-gray-200 text-sm md:text-base">Back-end developer</p>
@@ -71,7 +71,7 @@ include_once '../template/components/header.php';
             <!-- name 2 -->
             <div class="group bg-white rounded-2xl shadow-sm transition-all duration-300 ease-in-out overflow-hidden">
                 <div class="relative">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Teammate" class="w-full h-52 md:h-48 object-cover object-center" />
+                    <img src="img/Cristian.png" alt="Teammate" class="w-full h-52 md:h-48 object-cover object-center" />
                     <div class="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 flex flex-col justify-end">
                         <h3 class="text-xl font-semibold text-white">Cristian de Vries</h3>
                         <p class="text-gray-200 text-sm md:text-base">Front-end developer</p>
@@ -98,7 +98,7 @@ include_once '../template/components/header.php';
             <!-- name 3 -->
             <div class="group bg-white rounded-2xl shadow-sm transition-all duration-300 ease-in-out overflow-hidden">
                 <div class="relative">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Teammate" class="w-full h-52 md:h-48 object-cover object-center" />
+                    <img src="img/Ezra.png" alt="Teammate" class="w-full h-52 md:h-48 object-cover object-center" />
                     <div class="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 flex flex-col justify-end">
                         <h3 class="text-xl font-semibold text-white">Ezra Vos</h3>
                         <p class="text-gray-200 text-sm md:text-base">Back-end developer</p>
@@ -125,7 +125,7 @@ include_once '../template/components/header.php';
             <!-- name 4 -->
             <div class="group bg-white rounded-2xl shadow-sm transition-all duration-300 ease-in-out overflow-hidden">
                 <div class="relative">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Teammate" class="w-full h-52 md:h-48 object-cover object-center" />
+                    <img src="img/Jada.png" alt="Teammate" class="w-full h-52 md:h-48 object-cover object-center" />
                     <div class="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 flex flex-col justify-end">
                         <h3 class="text-xl font-semibold text-white">Jada Hooper</h3>
                         <p class="text-gray-200 text-sm md:text-base">Front-end developer</p>
