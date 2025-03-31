@@ -44,23 +44,34 @@ function getPage()
     switch ($_SESSION["page"]) {
         case 'home':
             $database = getData();
-            $favorieten = [$database[6], $database[5], $database[0]];
+            $recipeIds = array_column($database, 'recipe_id');
+            $favorieten = [];
+            for ($i = 0; $i < 3 && $i < count($recipeIds); $i++) {
+                $favorieten[] = getData($recipeIds[$i]);
+            }
             $themas = ["italiaans", "nederlands"];
             $data = ["favs" => $favorieten, "thema" => $themas, "database" => $database];
             break;
         case 'uitwerking':
             $database = getData($_GET["id"]);
             if (!empty($database)) {
-                $ingredients = !empty($database["ingredients"]) ? explode(",", $database["ingredients"]) : [];
-                $instructions = !empty($database["instructions"]) ? explode("|", $database["instructions"]) : [];
-                $data = ["recept" => $database, "ingredients" => $ingredients, "instructions" => $instructions];
+                $data = [
+                    "recept" => $database['recipe'],
+                    "ingredients" => $database['ingredients'],
+                    "instructions" => $database['instructions'],
+                    "preparation_time" => $database['preparation_time']
+                ];
             } else {
                 $data = ["recept" => [], "ingredients" => [], "instructions" => []];
             }
             break;
         case 'login':
             $database = getData();
-            $favorieten = [$database[6], $database[5], $database[0]];
+            $recipeIds = array_column($database, 'recipe_id');
+            $favorieten = [];
+            for ($i = 0; $i < 3 && $i < count($recipeIds); $i++) {
+                $favorieten[] = getData($recipeIds[$i]);
+            }
             $themas = ["italiaans", "nederlands"];
             $data = ["favs" => $favorieten, "thema" => $themas, "database" => $database];
             break;
@@ -73,8 +84,12 @@ function getPage()
             break;
         case 'recepten':
             $database = getData();
-            $favorieten = [$database[6], $database[5], $database[0]];
-            $data = ["database" => $database];
+            $recipeIds = array_column($database, 'recipe_id');
+            $favorieten = [];
+            for ($i = 0; $i < 3 && $i < count($recipeIds); $i++) {
+                $favorieten[] = getData($recipeIds[$i]);
+            }
+            $data = ["favs" => $favorieten, "database" => $database];
             break;
         case 'toevoegen':
             checkAuth();

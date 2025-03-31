@@ -23,16 +23,51 @@ function getData($id = null)
 {
     $database = DBconnect();
     if ($id !== null) {
-        $dataRequest = $database->prepare("SELECT *  FROM recipes WHERE recipe_id = :id");
-        $dataRequest->bindParam(":id", $id);
-        $dataRequest->execute();
-        $data = $dataRequest->fetch(PDO::FETCH_ASSOC);
+        $recipeQuery = $database->prepare("SELECT recipe_id, title, description, image FROM recipes WHERE recipe_id = :id");
+        $recipeQuery->bindParam(":id", $id);
+        $recipeQuery->execute();
+        $recipeData = $recipeQuery->fetch(PDO::FETCH_ASSOC);
+
+        $ingredientsQuery = $database->prepare("
+            SELECT i.name, i.unit, ri.quantity 
+            FROM recipe_ingredients ri 
+            JOIN Ingredients i ON ri.ingredient_id = i.ingredient_id 
+            WHERE ri.recipe_id = :id
+        ");
+        $ingredientsQuery->bindParam(":id", $id);
+        $ingredientsQuery->execute();
+        $ingredientsData = $ingredientsQuery->fetchAll(PDO::FETCH_ASSOC);
+
+        $instructionsQuery = $database->prepare("
+            SELECT step_number, instruction_text 
+            FROM Instructions 
+            WHERE recipe_id = :id 
+            ORDER BY step_number ASC
+        ");
+        $instructionsQuery->bindParam(":id", $id);
+        $instructionsQuery->execute();
+        $instructionsData = $instructionsQuery->fetchAll(PDO::FETCH_ASSOC);
+
+        $timeQuery = $database->prepare("
+            SELECT time_value, time_unit 
+            FROM PreparationTime 
+            WHERE recipe_id = :id
+        ");
+        $timeQuery->bindParam(":id", $id);
+        $timeQuery->execute();
+        $timeData = $timeQuery->fetch(PDO::FETCH_ASSOC);
+
+        return [
+            'recipe' => $recipeData,
+            'ingredients' => $ingredientsData,
+            'instructions' => $instructionsData,
+            'preparation_time' => $timeData
+        ];
     } else {
-        $dataRequest = $database->prepare("SELECT * FROM recipes");
+        $dataRequest = $database->prepare("SELECT recipe_id, title, description, image FROM recipes");
         $dataRequest->execute();
-        $data = $dataRequest->fetchAll(PDO::FETCH_ASSOC);
+        return $dataRequest->fetchAll(PDO::FETCH_ASSOC);
     }
-    return $data;
 }
 
 function getUser() {
