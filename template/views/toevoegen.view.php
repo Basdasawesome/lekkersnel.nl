@@ -29,9 +29,9 @@
                 <div>
                     <label class="block text-gray-700 text-sm font-medium mb-1" for="tijd_eenheid">Eenheid</label>
                     <select name="tijd_eenheid" id="tijd_eenheid" class="w-full p-[14px] border rounded-md">
-                        <option value="seconds">Seconden</option>
-                        <option value="minutes">Minuten</option>
-                        <option value="hours">Uur</option>
+                        <option value="seconden">Seconden</option>
+                        <option value="minuten">Minuten</option>
+                        <option value="uur">Uur</option>
                     </select>
                 </div>
                 <div>

@@ -25,18 +25,18 @@ if (isset($recept) && is_array($recept)) {
     <div class="flex flex-col md:flex-row lg:gap-56">
         <div class="md:w-2/3">
             <h1 class="text-3xl font-bold mb-4"><?=$title?></h1>
-            <p class="text-gray-700 mb-2"><strong>Bereidingstijd:</strong> <?=$preptime?></p>
-            <p class="text-gray-700 mb-6"><strong>Recept voor:</strong> <?=$quantity?></p>
+            <p class="text-gray-700 mb-2"><strong>Bereidingstijd:</strong> <?=$preparation_time["time_value"] . " " . $preparation_time["time_unit"] ?></p>
+            <p class="text-gray-700 mb-6"><strong>Recept voor:</strong> <?= $recept["description"] ?></p>
 
             <h2 class="text-2xl font-semibold mb-4">Benodigdheden</h2>
             <ul class="list-none list-inside mb-6 text-lg text-gray-700 [&>li]:relative [&>li]:before:content-['•'] [&>li]:before:absolute [&>li]:before:-left-4 [&>li]:before:text-primary [&>li]:before:text-xl">
-                <?php if (!empty($ingredients)): ?>
-                    <?php foreach ($ingredients as $ingredient): ?>
-                        <li><?=$ingredient?></li>
-                    <?php endforeach; ?>
-                <?php else: ?>
+                <?php if (!empty($ingredients)) { ?>
+                    <?php foreach ($ingredients as $ingredient) { ?>
+                        <li><?= $ingredient["quantity"] . " " . $ingredient["unit"] . ", " . $ingredient["name"] ?></li>
+                    <?php } ?>
+                <?php } else { ?>
                     <li>Geen ingrediënten beschikbaar</li>
-                <?php endif; ?>
+                <?php } ?>
             </ul>
         </div>
         <div class="w-3/5 md:w-2/3 lg:w-5/6">
@@ -47,13 +47,13 @@ if (isset($recept) && is_array($recept)) {
     <div class="mt-8">
         <h2 class="text-2xl font-semibold mb-4">Bereidingswijze</h2>
         <ol class="list-decimal list-inside text-lg text-gray-700 space-y-2">
-            <?php if (!empty($instructions)): ?>
-                <?php foreach ($instructions as $instruction): ?>
-                    <li><?=$instruction?></li>
-                <?php endforeach; ?>
-            <?php else: ?>
+            <?php if (!empty($instructions)) { ?>
+                <?php foreach ($instructions as $instruction) { ?>
+                    <li><?= $instruction["instruction_text"] ?></li>
+                <?php } ?>
+            <?php } else { ?>
                 <li>Geen instructies beschikbaar.</li>
-            <?php endif; ?>
+            <?php } ?>
         </ol>
     </div>
 </section>

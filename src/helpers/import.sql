@@ -56,7 +56,7 @@ CREATE TABLE Instructions (
 CREATE TABLE PreparationTime (
     recipe_id INT PRIMARY KEY,
     time_value INT NOT NULL, 
-    time_unit ENUM('seconds', 'minutes', 'hours') NOT NULL, 
+    time_unit ENUM('seconden', 'minuten', 'uur') NOT NULL, 
     FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id) ON DELETE CASCADE
 );
 
@@ -137,14 +137,14 @@ INSERT INTO Instructions (recipe_id, step_number, instruction_text) VALUES
 
 -- Dummy Preparation Time
 INSERT INTO PreparationTime (recipe_id, time_value, time_unit) VALUES
-(1, 15, 'minutes'),
-(2, 20, 'minutes'),
-(3, 25, 'minutes'),
-(4, 35, 'minutes'),
-(5, 105, 'minutes'),
-(6, 50, 'minutes'),
-(7, 165, 'minutes'),
-(8, 40, 'minutes'),
-(9, 35, 'minutes'),
-(10, 40, 'minutes'),
-(11, 35, 'minutes');
+(1, 15, 'minuten'),
+(2, 20, 'minuten'),
+(3, 25, 'minuten'),
+(4, 35, 'minuten'),
+(5, 105, 'minuten'),
+(6, 50, 'minuten'),
+(7, 165, 'minuten'),
+(8, 40, 'minuten'),
+(9, 35, 'minuten'),
+(10, 40, 'minuten'),
+(11, 35, 'minuten');

@@ -12,6 +12,7 @@ function receptToevoegen()
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $file = $_FILES["image"];
+    var_dump($file);
 
     if ($file["size"] > 0) {
         if (isset($_POST["submit"])) {
@@ -22,19 +23,26 @@ function receptToevoegen()
                 $uploadOk = 0;
             }
         }
+
+        var_dump($uploadOk);
         
         if (file_exists($target_file)) {
             $uploadOk = 0;
+            $fileMessage = "Foto die je wil uploaden bestaat al";
         }
-        if ($_FILES["image"]["size"] > 500000) {
+        if ($_FILES["image"]["size"] > 50000000) {
             $uploadOk = 0;
+            $fileMessage = "Foto die je wil uploaden is te groot";
         }
         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
             $uploadOk = 0;
+            $fileMessage = "Foto die je wil uploaden moet jpg, jpeg, png of gif type zijn";
         }
         move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
     }
     
+    var_dump($_POST, $uploadOk);
+
     $naam = trim($_POST["naam"]);
     $bereidingstijd = trim($_POST["bereidingstijd"]);
     $tijd_eenheid = trim($_POST["tijd_eenheid"]);
@@ -55,7 +63,7 @@ function receptToevoegen()
     if (empty($naam) || empty($bereidingstijd) || empty($tijd_eenheid) || empty($aantal) || empty($beschrijving) || empty($ingredienten) || empty($instructies) || count($ingredienten) !== count($hoeveelheid) || count($ingredienten) !== count($ingredient_eenheid) || count($ingredient_eenheid) !== count($hoeveelheid)) {
         $message = "Alle velden moeten ingevuld worden!";
     } else if (!is_numeric($bereidingstijd) || !is_numeric($aantal)) {
-        $message = "Bereidingstijd en personen moeten een cijfer zijn";
+        $message = $fileMessage;
     } else if ($uploadOk == 0) {
         $message = "Er was een probleem met de foto uploaden";
     } else {
