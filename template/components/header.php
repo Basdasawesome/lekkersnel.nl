@@ -49,16 +49,20 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'home';
             </div>
 
             <!-- Profiel -->
-            <div class="relative">
-                <button id="profile-btn" class="flex items-center focus:outline-none">
-                    <img src="<?= htmlspecialchars($user['profile_picture'] ?? 'img/default-avatar.png') ?>" alt="User Profile" class="w-12 h-12 rounded-full">
-                </button>
-                <!-- Dropdown-menu -->
-                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
-                    <a href="?page=profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profiel</a>
-                    <a href="?page=logout" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Uitloggen</a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <div class="relative">
+                    <button id="profile-btn" class="flex items-center focus:outline-none">
+                        <img src="<?= htmlspecialchars($user['profile_picture'] ?? 'img/default-avatar.png') ?>" alt="User Profile" class="w-12 h-12 rounded-full">
+                    </button>
+                    <!-- Dropdown-menu -->
+                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                        <a href="?page=profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profiel</a>
+                        <a href="?page=logout" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Uitloggen</a>
+                    </div>
                 </div>
-            </div>
+            <?php else: ?>
+                <a href="?page=login" class="text-gray-500 hover:text-gray-700">Login</a>
+            <?php endif; ?>
 
             <!-- Hamburger -->
             <button id="menu-toggle" type="button" class="lg:hidden p-2 text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
