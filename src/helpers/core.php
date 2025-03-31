@@ -71,9 +71,8 @@ function getPage()
             $favorieten = [];
             for ($i = 0; $i < 3 && $i < count($recipeIds); $i++) {
                 $favorieten[] = getData($recipeIds[$i]);
-            }
             $themas = ["italiaans", "nederlands"];
-            $data = ["favs" => $favorieten, "thema" => $themas, "database" => $database];
+            $data = ["thema" => $themas, "database" => $database];
             break;
         case 'logout':
             include_once __DIR__ . '/logout.php';
