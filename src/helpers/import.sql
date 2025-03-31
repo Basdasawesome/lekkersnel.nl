@@ -1,7 +1,10 @@
+
+-- Reset and create database
 DROP DATABASE IF EXISTS lekkersneldb;
 CREATE DATABASE lekkersneldb;
 USE lekkersneldb;
 
+-- Users table
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(255) UNIQUE NOT NULL,
@@ -11,6 +14,7 @@ CREATE TABLE Users (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Recipes table
 CREATE TABLE Recipes (
     recipe_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
@@ -22,21 +26,24 @@ CREATE TABLE Recipes (
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
+-- Ingredients table
 CREATE TABLE Ingredients (
     ingredient_id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100) UNIQUE NOT NULL,
-    unit VARCHAR(50) NULL
+    name VARCHAR(100) UNIQUE NOT NULL
 );
 
+-- Recipe_Ingredients table (unit moved here)
 CREATE TABLE Recipe_Ingredients (
     recipe_id INT NOT NULL,
     ingredient_id INT NOT NULL,
-    quantity VARCHAR(50) NOT NULL, 
+    quantity VARCHAR(50) NOT NULL,
+    unit VARCHAR(50) NULL,
     PRIMARY KEY (recipe_id, ingredient_id),
     FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id) ON DELETE CASCADE,
     FOREIGN KEY (ingredient_id) REFERENCES Ingredients(ingredient_id) ON DELETE CASCADE
 );
 
+-- Instructions table
 CREATE TABLE Instructions (
     instruction_id INT PRIMARY KEY AUTO_INCREMENT,
     recipe_id INT NOT NULL,
@@ -45,6 +52,7 @@ CREATE TABLE Instructions (
     FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id) ON DELETE CASCADE
 );
 
+-- PreparationTime table
 CREATE TABLE PreparationTime (
     recipe_id INT PRIMARY KEY,
     time_value INT NOT NULL, 
@@ -63,50 +71,58 @@ INSERT INTO Users (username, email, password_hash) VALUES
 INSERT INTO Users (username, email, password_hash, profile_picture) VALUES
 ('admin', 'admin@gmail.com', '$2y$10$HMKk9xx0ppDVUr6plK5THuyLuwnb4rxJV3Edy6pr5AcBx6LGO3adm', 'img/pfp.png');
 
+-- Dummy Ingredients (without units)
+INSERT INTO Ingredients (name) VALUES
+('Bloem'),
+('Melk'),
+('Eieren'),
+('Zout'),
+('Pizzasaus'),
+('Kaas'),
+('Basilicum'),
+('Mozzarella'),
+('Pizzadeeg'),
+('Hamburgerbroodje'),
+('Burger'),
+('Cheddar kaas'),
+('Rode ui'),
+('Augurk'),
+('Tomaat'),
+('Mayonaise'),
+('Ketchup');
+
 -- Dummy Recipes
 INSERT INTO Recipes (user_id, title, description, image) VALUES
 (1, 'Pannenkoeken', 'Heerlijke luchtige pannenkoeken voor het ontbijt of als snack.', 'https://www.flyingfoodie.nl/wp-content/uploads/2017/10/Echte-hollandse-pannenkoeken.jpg'),
 (2, 'Pizza margherita', 'Een simpele pizza kan zo lekker zijn.', 'https://www.leukerecepten.nl/app/uploads/2023/02/pizza-margharita.jpg'),
-(3, 'Cheeseburger', 'Geniet van een heerlijke klassieke cheeseburger!', 'https://www.leukerecepten.nl/app/uploads/2023/06/cheeseburger.jpg');
+(3, 'Cheeseburger', 'Geniet van een heerlijke klassieke cheeseburger!', 'https://www.leukerecepten.nl/app/uploads/2023/06/cheeseburger.jpg'),
+(1, 'Burrito met kip', 'Lekker recept voor burrito met kip.', 'https://www.leukerecepten.nl/app/uploads/2020/05/burrito.jpg'),
+(2, 'Lasagne bolognese', 'Het traditionele recept voor lasagne bolognese met een kruidige gehaktsaus.', 'https://www.leukerecepten.nl/app/uploads/2022/03/lasagne-bolognese.jpg'),
+(3, 'Kipsaté', 'Kip saté is een echte klassieker!', 'https://www.leukerecepten.nl/app/uploads/2019/05/recept-kip-sate-spies.jpg'),
+(4, 'Spareribs', 'Hoe maak je de lekkerste spareribs?', 'https://www.leukerecepten.nl/app/uploads/2020/07/spareribs_b.jpg'),
+(5, 'Maki sushi recept', 'Deze traditionele sushi rol maak je makkelijk zelf.', 'https://www.leukerecepten.nl/app/uploads/2023/02/maki_sushi.jpg'),
+(6, 'Empanadas', 'Deze empanada (gevuld deeg pasteitje) met een kruidige vulling van gehakt is ideaal voor een borrel.', 'https://images.getrecipekit.com/v1614896752_Beef-Cheese-Empanadas-Web-1_lqfa2v.jpg?aspect_ratio=4:3&quality=90&'),
+(1, 'Risotto met kip', 'Makkelijk recept voor romige risotto met gerookte kip.', 'https://www.leukerecepten.nl/app/uploads/2022/04/Risotto-met-kip_c.jpg'),
+(2, 'Nacho ovenschotel met gehakt', 'Een echte guilty pleasure: Mexicaanse nacho ovenschotel.', 'https://www.leukerecepten.nl/app/uploads/2022/08/Nachos-met-gehakt-1-1024x576.jpg');
 
--- Dummy Ingredients 
-INSERT INTO Ingredients (name, unit) VALUES
-('Bloem', 'g'),
-('Melk', 'ml'),
-('Eieren', 'stuks'),
-('Zout', 'snufje'),
-('Pizzasaus', 'ml'),
-('Kaas', 'g'),
-('Basilicum', 'handje'),
-('Mozzarella', 'bol'),
-('Pizzadeeg', NULL), 
-('Hamburgerbroodje', 'stuks'),
-('Burger', 'stuks'),
-('Cheddar kaas', 'plakken'),
-('Rode ui', 'stuks'),
-('Augurk', 'stuks'),
-('Tomaat', 'stuks'),
-('Mayonaise', 'eetlepels'),
-('Ketchup', 'eetlepels');
-
--- Dummy Recipe_Ingredients (INSERT THIS LAST)
-INSERT INTO Recipe_Ingredients (recipe_id, ingredient_id, quantity) VALUES
-(1, 1, '200'), 
-(1, 2, '500'), 
-(1, 3, '2'), 
-(1, 4, '1'), 
-(2, 5, '200'), 
-(2, 6, '100'), 
-(2, 7, '1'), 
-(2, 8, '1'), 
-(3, 10, '2'), 
-(3, 11, '2'), 
-(3, 12, '4'), 
-(3, 13, '1'),
-(3, 14, '2'), 
-(3, 15, '1'), 
-(3, 16, '2'), 
-(3, 17, '2');
+-- Dummy Recipe_Ingredients (with units now)
+INSERT INTO Recipe_Ingredients (recipe_id, ingredient_id, quantity, unit) VALUES
+(1, 1, '200', 'g'), 
+(1, 2, '500', 'ml'), 
+(1, 3, '2', 'stuks'), 
+(1, 4, '1', 'snufje'), 
+(2, 5, '200', 'ml'), 
+(2, 6, '100', 'g'), 
+(2, 7, '1', 'handje'), 
+(2, 8, '1', 'bol'), 
+(3, 10, '2', 'stuks'), 
+(3, 11, '2', 'stuks'), 
+(3, 12, '4', 'plakken'), 
+(3, 13, '1', 'stuks'),
+(3, 14, '2', 'stuks'), 
+(3, 15, '1', 'stuks'), 
+(3, 16, '2', 'eetlepels'), 
+(3, 17, '2', 'eetlepels');
 
 -- Dummy Instructions
 INSERT INTO Instructions (recipe_id, step_number, instruction_text) VALUES
@@ -123,4 +139,12 @@ INSERT INTO Instructions (recipe_id, step_number, instruction_text) VALUES
 INSERT INTO PreparationTime (recipe_id, time_value, time_unit) VALUES
 (1, 15, 'minutes'),
 (2, 20, 'minutes'),
-(3, 25, 'minutes');
+(3, 25, 'minutes'),
+(4, 35, 'minutes'),
+(5, 105, 'minutes'),
+(6, 50, 'minutes'),
+(7, 165, 'minutes'),
+(8, 40, 'minutes'),
+(9, 35, 'minutes'),
+(10, 40, 'minutes'),
+(11, 35, 'minutes');
