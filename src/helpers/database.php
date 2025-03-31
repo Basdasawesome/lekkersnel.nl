@@ -29,7 +29,7 @@ function getData($id = null)
         $recipeData = $recipeQuery->fetch(PDO::FETCH_ASSOC);
 
         $ingredientsQuery = $database->prepare("
-            SELECT i.name, ri.quantity 
+            SELECT i.name, ri.quantity, ri.unit 
             FROM recipe_ingredients ri 
             JOIN Ingredients i ON ri.ingredient_id = i.ingredient_id 
             WHERE ri.recipe_id = :id
