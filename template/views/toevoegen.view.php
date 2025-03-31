@@ -21,14 +21,22 @@
             <label class="block text-gray-700 text-sm font-medium mb-1" for="naam">Naam van het recept</label>
             <input type="text" name="naam" id="naam" placeholder="Bijv, Pasta Carbonara" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                 <div>
                     <label class="block text-gray-700 text-sm font-medium mb-1" for="bereidingstijd">Bereidingstijd</label>
-                    <input type="text" name="bereidingstijd" id="bereidingstijd" placeholder="Bijv, 30 min" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200">
+                    <input type="number" name="bereidingstijd" id="bereidingstijd" placeholder="Bijv, 30 min" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-1" for="tijd_eenheid">Eenheid</label>
+                    <select name="tijd_eenheid" id="tijd_eenheid" class="w-full p-[14px] border rounded-md">
+                        <option value="seconds">Seconden</option>
+                        <option value="minutes">Minuten</option>
+                        <option value="hours">Uur</option>
+                    </select>
                 </div>
                 <div>
                     <label class="block text-gray-700 text-sm font-medium mb-1" for="aantal">Aantal personen</label>
-                    <input type="text" name="aantal" id="aantal" placeholder="Bijv, 4 personen" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200">
+                    <input type="number" name="aantal" id="aantal" placeholder="Bijv, 4 personen" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200">
                 </div>
             </div>
         </div>
@@ -50,11 +58,16 @@
             <label class="text-gray-700 text-sm font-medium" for="ingredienten">Benodigdheden</label>
             <button id="addIngredienten" class="text-primary text-sm font-medium hover:underline">+ Voeg ingrediënt toe</button>
         </div>
-        <div class="relative mt-2 flex">
-            <input type="text" name="ingredienten[]" id="ingredienten" placeholder="Hoeveelheid + Ingrediënten" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200">
-            <!-- <button class="text-gray-400 hover:text-red-500 ml-2">
-                🗑️
-            </button> -->
+        <div class="flex justify-center items-center flex-row gap-2">
+            <div class="w-7/12 relative mt-2">
+                <input type="text" name="ingredienten[]" id="ingredient" placeholder="Ingrediënten" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200">
+            </div>
+            <div class="w-3/12 relative mt-2">
+                <input type="number" name="hoeveelheid[]" id="hoeveelheid" placeholder="Hoeveelheid" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200">
+            </div>
+            <div class="w-2/12 relative mt-2">
+                <input type="text" name="ingredient_eenheid[]" id="ingredienten" placeholder="Eenheid" class="w-full p-3 border rounded-md bg-gray-100 focus:ring focus:ring-green-200">
+            </div>
         </div>
     </div>
 

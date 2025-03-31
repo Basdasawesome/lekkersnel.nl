@@ -60,9 +60,8 @@ function getPage()
             break;
         case 'login':
             $database = getData();
-            $favorieten = [$database[6], $database[5], $database[0]];
             $themas = ["italiaans", "nederlands"];
-            $data = ["favs" => $favorieten, "thema" => $themas, "database" => $database];
+            $data = ["thema" => $themas, "database" => $database];
             break;
         case 'logout':
             include_once __DIR__ . '/logout.php';
