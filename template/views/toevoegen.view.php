@@ -87,7 +87,7 @@
     </div>
 
     <div class="mt-6 flex justify-end">
-        <input type="submit" class="bg-primary hover:bg-gray-800 text-white px-6 py-3 rounded-md opacity-90 transition duration-200"></button>
+        <input type="submit" class="bg-primary hover:opacity-75 transition-all text-white px-12 py-2 rounded-md opacity-90 transition duration-200"></button>
     </div>
 </form>
 
