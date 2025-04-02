@@ -58,9 +58,9 @@ function receptToevoegen()
     if (empty($naam) || empty($bereidingstijd) || empty($tijd_eenheid) || empty($aantal) || empty($beschrijving) || empty($ingredienten) || empty($instructies) || count($ingredienten) !== count($hoeveelheid) || count($ingredienten) !== count($ingredient_eenheid) || count($ingredient_eenheid) !== count($hoeveelheid)) {
         $message = "Alle velden moeten ingevuld worden!";
     } else if (!is_numeric($bereidingstijd) || !is_numeric($aantal)) {
-        $message = $fileMessage;
+        $message = "Bereidingstijd en aantal personen moet in getallen";
     } else if ($uploadOk == 0) {
-        $message = "Er was een probleem met de foto uploaden";
+        $message = $fileMessage;
     } else {
         $stmt = $pdo->prepare("INSERT INTO recipes (user_id, title, description, image) VALUES (?, ?, ?, ?)");
         $stmt->bindParam(1, $user_id);
